@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            /* font-size: 0; */
+        }
+        ul li{
+            list-style: none;
+        }
+        .items{
+            overflow: hidden;
+            /* float: left; */
+        }
+        .item{
+            width: 100px;
+            height: 50px;
+            background-color: aqua;
+            font-size: 20px;
+            text-align: center;
+            line-height: 50px;
+            /* display: inline-block; */
+            float: left;
+        }
+        .title{
+            width: 100px;
+            height: 50px;
+            background-color: brown;
+            text-align: center;
+            line-height: 50px;
+        }
+        .clearfix::after{
+            content: '';
+            clear:left;
+            display: table;
+        }
+    </style>
+</head>
+<body>
+    <ul class="items">
+        <li class="item">1</li>
+        <li class="item">2</li>
+        <li class="item">3</li>
+        <li class="item">4</li>
+        <li class="item">5</li>
+        <!-- <div style="clear: left;"></div> -->
+    </ul>
+    <!-- <div class="title">近日，“昆明小学生研究癌症获奖”遭网友质疑，引发热议。7月15日，该获奖小学生陈某某家长对外发布一封公开信，对该事件来龙去脉给与说明回复：
+        关于本人孩子参加全国青少年科技创新大赛获奖项目的情况说明      
+        本人针对全国青少年科技创新大赛获奖项目“C10orf67在结直肠癌发生发展中的功能与机制研究”情况作出如下说明：
+    </div> -->
+    <div class="title"></div>
+    <!-- <div class="number"></div>
+    <div class="number">123</div>
+    <div id="page"></div>
+    <div id="container" class="wrapper">
+        <div class="name"><a href="">张三</a>
+        </div>
+    </div> -->
+
+</body>
+</html>
