@@ -32,6 +32,14 @@ Page({
         actor: "",
         time: "2020-07-20",
         wantSee: '1248'
+      },
+      {
+        isShow: 1,
+        name: "呆瓜兄弟",
+        imgUrl: "https://p0.meituan.net/movie/2936b71457957c7abac6cddaf88c46323153903.jpg@1l_1e_1c_128w_180h",
+        actor: "",
+        time: "2020-07-31",
+        wantSee: '1102'
       }
     ]
   },

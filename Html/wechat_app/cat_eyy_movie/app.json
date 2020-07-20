@@ -21,7 +21,7 @@
         "selectedIconPath":"images/hover-shouye.png"
       },
       {
-        "text": "课程",
+        "text": "分类",
         "pagePath": "pages/lesson/lesson",
         "iconPath": "images/class.png",
         "selectedIconPath":"images/hover-class.png"

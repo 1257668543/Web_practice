@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- <meta name="viewport" content="width=device-width, initial-scale=0.5"> -->
+    <title>Document</title>
+    <script>
+        // 此处为设置动态的initial-scale缩放比列，能根据移动端机型进行自适应
+        var ratio = 1 / window.devicePixelRatio;    //计算动态缩放比例
+        var meta = document.createElement('meta');  //document.creatElement方法创建meta元素
+        meta.name = 'viewport';                     //将meta.name属性指向视窗 'viewport'
+        meta.content = 'width=device-width, initial-scale=' + ratio ;   //将meta.content属性指向initial-scale缩放控制，并用' + '操作符进行字符串拼接
+        var head =document.querySelector('head');   //使用选择器选择head标签
+        head.appendChild(meta);                     //将meta元素添加为head标签的子元素
+        // 将屏幕等分成10份 1rem = 屏幕width / 10
+        var width = window.innerWidth  / 10;
+        var html = document.querySelector('html');
+        // 每一份 就是 1rem （因为 font-size 就是1rem）
+        html.style.fontSize= width + 'px';    // 1rem = html的font-size
+    </script>
+    <style>
+        html{
+            /* 不同的设备上面调整 html的 font-size */
+            /* 调整多少？？结合设计稿 */
+            /* 设备物理像素 / 逻辑像素（css：1px） = DPR 
+            6: 750
+            X: 1125
+            */
+            font-size: 20px;
+        }
+        /* div{
+            /* font-size: 30px;
+            /*?
+            60px: 无论在哪个设备上面 都是 死的值
+            */
+             /* width: 3rem;
+            height: 3rem;
+            background-color: green; 
+        } */ 
+        input{
+            height: .747rem;
+            width: 5.92rem;
+            /*  */
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <input type="text" />
+    </div>
+</body>
+</html>

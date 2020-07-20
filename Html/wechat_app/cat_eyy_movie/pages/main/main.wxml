@@ -29,14 +29,23 @@
                 </view>
 
                 <view class="item_middle">
-                    <view class="title">{{item.name}}</view>
-                    <view class="ep">想看人数</view>
-                    <view class="actor">{{item.actor}}</view>
-                    <view class="time">{{item.time}}</view>
+                    <view class="title">
+                        <text>{{item.name}}</text>
+                    </view>
+                    <view class="ep">
+                        <text class="num">{{item.wantSee}} </text>
+                        <text class="fix"> 人想看</text>
+                    </view>
+                    <view class="actor">
+                        <text class="fix">主演：{{item.actor}}</text>
+                    </view>
+                    <view class="time">
+                        <text class="fix">{{item.time}}上映</text>
+                    </view>
                 </view>
 
                 <view class="item_right">
-                    按钮
+                    <text>想看</text>
                 </view>
             </view>
         </view>

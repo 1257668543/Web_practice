@@ -93,3 +93,28 @@
     padding-top: 5px;
     float: left;
 }
+.item_right{
+    background-color: orange;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    font-size: 15px;
+    color: white;
+    transform: translateY(80rpx);
+}
+.title{
+    color: #333333;
+    font-weight: bold;
+    font-size: 17px;
+}
+.num{
+    color: orange;
+    font-weight: bold;
+    font-size: 15px;
+}
+.fix{
+    font-size: 13px;
+    color:#787878 ;
+}
