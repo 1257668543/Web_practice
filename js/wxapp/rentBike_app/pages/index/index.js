@@ -1,9 +1,48 @@
 //index.js
 //获取应用实例
 const app = getApp()
+const cars = []
 
-Page({
+Page(
+  {
   data: {
+    // isHidden: true,
+    markers: [{
+      iconPath: "/images/location.png",
+      id: 0,
+      latitude: 28.714250,
+      longitude: 115.828342,
+      width: 50,
+      height: 50
+    },
+    {
+      iconPath: "/images/bike.png",
+      id: 1,
+      latitude: 28.713250,
+      longitude: 115.827342,
+      width: 50,
+      height: 50
+    },
+    {
+      iconPath: "/images/bike.png",
+      id: 2,
+      latitude: 28.713250,
+      longitude: 115.828342,
+      width: 50,
+      height: 50
+    }],
+    polyline: [{
+      points: [{
+        longitude: 115.832281,
+        latitude: 28.711275
+      }, {
+        longitude: 115.838719,
+        latitude: 28.716935
+      }],
+      color:"#FF0000DD",
+      width: 2,
+      dottedLine: true
+    }],
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
@@ -16,6 +55,11 @@ Page({
     })
   },
   onLoad: function () {
+    setTimeout(()=>{
+      this.setData({
+        isHidden:false
+      })
+    })
     if (app.globalData.userInfo) {
       this.setData({
         userInfo: app.globalData.userInfo,
