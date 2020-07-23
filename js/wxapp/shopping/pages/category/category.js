@@ -156,7 +156,6 @@ Page({
     ]
   },
   tabChange(e){
-    console.log(e)
     this.setData({
       getId: e.currentTarget.id
     })

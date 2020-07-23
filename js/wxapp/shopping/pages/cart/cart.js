@@ -27,7 +27,6 @@ Page({
   },
 
   selectList(e) {
-    console.log(e)
     // 让当前这条数据里面的selected值取反
     let index = e.currentTarget.dataset.index
     let selected = `carts[${index}].selected` // "carts[ " + index + "].selected"
@@ -63,6 +62,42 @@ Page({
     }
     this.setData({
       totalPrice: total.toFixed(2)
+    })
+  },
+  reduce(e){
+    let index = e.currentTarget.dataset.index
+    let num = `carts[${index}].num`
+    let carts =this.data.carts
+    this.setData({
+      [num]: this.data.carts[index].num - 1
+    })
+    if (this.data.carts[index].num==0) {
+      this.splice(index)
+    }
+    this.getTotalPrice()
+  },
+  add(e){
+    let index = e.currentTarget.dataset.index
+    let num = `carts[${index}].num`
+    this.setData({
+      [num]: this.data.carts[index].num + 1
+    })
+    this.getTotalPrice()
+  },
+  delete(e){
+    let index = e.currentTarget.dataset.index
+    this.splice(index)
+    // let carts = this.data.carts
+    // carts.splice(index,1)
+    // this.setData({
+    //   carts: carts
+    // })
+  },
+  splice(index){
+    let carts = this.data.carts
+    carts.splice(index,1)
+    this.setData({
+      carts: carts
     })
   },
   /**
