@@ -9,15 +9,17 @@
      .then(data => data.json())
      .then(data => {
         //  console.log(data)
-        if (data.code == 200) { //状态码
+        if (data.code == 200) { //状态码,200表示请求成功
         const banners = data.banners;
         const html = banners.map((banner) => {
             // console.log(banner);
             return`
-                <img src="${banner.imageUrl}">
+                <img src="${baner.imageUrl}">
                 `
-        })
-        console.log(html);
+        },
+        console.log(banner)
+        )
+        // console.log(html);
         bannerEle.innerHTML = html.join('');
     //     // console.log(banners, '+++++++');
     //     // array  -> html DOM 结点 
