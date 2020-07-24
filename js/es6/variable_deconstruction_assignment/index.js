@@ -5,20 +5,24 @@
 // --------------------------------------------数组的解构
 
 // let [a,b,c] = [1,2,3]
+// console.log(a) // output: 1
 
 // let [foo,[bar],baz]=[1,[2],3]
-
 
 // let [, , third] = ['a','b','c']
 
 // let[x,y] = [1,2,3]
+// console.log(x,y) // output: 1 2
 
 // let[head, ...tail] = [1,2,3,4] // 解构, ...tail占据剩余的所有数组元素并成为新数组
+// console.log(tail) // output: [2,3,4]
 
 // let[a,b, ...c] = ['hello']
+// console.log(a,b,c) // output: hello undefined []
 
 
 // let[foo,bar]=[1]
+// console.log(bar) // output: undefined
 
 // let [foo] = 1 //false NaN undefined null {}
 // let [foo] = {}
@@ -26,9 +30,12 @@
 
 
 // let [foo = true] = []
-// let [x, y = 'aaa'] = ['a', undefined] // undefined 解构出来 默认 赋值是不成功的
-// let [x, y = 'aaa'] = ['a', null] // null 解构出来赋值是成功的
 
+// let [x, y = 'aaa'] = ['a', undefined] // undefined 解构出来 默认 赋值是不成功的
+// console.log(x,y) // output: a aaa
+
+// let [x, y = 'aaa'] = ['a', null] // null 解构出来赋值是成功的
+// console.log(x,y) // output: a null
 
 // let [x = 1, y = x] = [2] // 此例说明解构赋值是按照数组顺序执行的
 // console.log(x,y) // output：2 2
@@ -45,7 +52,7 @@
 
 // let{foo: baz} = { foo: 'aaa', bar: 'bbb' }
 // // foo 是匹配模式， baz才是变量
-// console.log(baz)
+// console.log(baz) // output: aaa
 
 // let obj = {
 //     name: '子晨',
@@ -80,6 +87,6 @@
 
 // let{toString: s} = 123
 // console.log(s === Number.prototype.toString)
-let{toString: s} = true
-console.log(s === Boolean.prototype.toString)
+// let{toString: s} = true
+// console.log(s === Boolean.prototype.toString)
 
