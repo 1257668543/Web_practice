@@ -1,0 +1,15 @@
+<!--components/ratingStar/ratingStar.wxml-->
+<view class="star">
+    <view class="entireStar" wx:for="{{entireStar}}">
+        <image class="img" src="/assets/imgs/rating_star_small_on.png">   
+        </image>
+    </view>
+    <view class="halfStar" wx:for="{{halfStar}}">
+        <image class="img" src="/assets/imgs/rating_star_small_half.png">
+        </image>
+    </view>
+    <view class="restStar" wx:for="{{restStar}}">
+        <image class="img" src="/assets/imgs/rating_star_small_off.png">
+        </image>
+    </view>
+</view>

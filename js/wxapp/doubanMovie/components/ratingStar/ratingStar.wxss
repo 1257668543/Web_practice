@@ -1,0 +1,8 @@
+/* components/ratingStar/ratingStar.wxss */
+.star{
+    display: flex;
+}
+.img{
+    width: 15px;
+    height: 15px;
+}
