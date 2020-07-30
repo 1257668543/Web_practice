@@ -5,14 +5,95 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    rankList:[
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      },
+      {
+        title: "Top250",
+        url: "/v2/movie/top250",
+        movies: []
+      }
+    ]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+        let rankList = this.data.rankList
+        for (let i = 0; i < rankList.length; i++) {
+          this.loadData(i, {apikey: '0df993c66c0c636e29ecbb5344252a4a'})        
+        }
+        console.log(this.data.rankList)
+  },
 
+  loadData(idx, params) {
+    let obj = this.data.rankList[idx]
+    let url = wx.db.url(obj.url) 
+    wx.request({
+        url: url,
+        data: params,
+        header: {'content-type': 'json'},
+        success: (res) => {
+            // console.log(res)
+            let movies = res.data.subjects
+            obj.movies = []
+            for (let index = 0; index < movies.length; index++) {
+                let element = movies[index]
+                let movie = element.subject || element
+                obj.movies.push(movie)
+            }
+            this.setData(this.data)
+        }
+    })
   },
 
   /**

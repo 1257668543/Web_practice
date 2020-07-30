@@ -42,7 +42,8 @@ Page({
         this.loadData(1, {apikey: '0df993c66c0c636e29ecbb5344252a4a'}),
         this.loadData(2, {apikey: '0df993c66c0c636e29ecbb5344252a4a'}),
         this.loadData(3, {apikey: '0df993c66c0c636e29ecbb5344252a4a'}),
-        this.loadData(4, {apikey: '0df993c66c0c636e29ecbb5344252a4a'})
+        this.loadData(4, {apikey: '0df993c66c0c636e29ecbb5344252a4a'}),
+        console.log(this.data.allMovies)
       })
       this.setData({
           search: this.search.bind(this)
@@ -57,7 +58,7 @@ Page({
         data: params,
         header: {'content-type': 'json'},
         success: (res) => {
-            console.log(res)
+            // console.log(res)
             let movies = res.data.subjects
             // let obj = this.data.allMovies[idx]
             obj.movies = []

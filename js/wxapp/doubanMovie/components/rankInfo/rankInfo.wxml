@@ -1,0 +1,4 @@
+<view>
+<text class="info">{{index}}. {{rankInfo.title}}</text>
+<text class="rating"> {{rankInfo.rating.average}} 分</text>
+</view>
