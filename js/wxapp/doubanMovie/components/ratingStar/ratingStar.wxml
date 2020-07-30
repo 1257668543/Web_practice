@@ -1,5 +1,8 @@
-<!--components/ratingStar/ratingStar.wxml-->
-<view class="star">
+<view class="star-wrapper">
+    <image class="" src="{{item}}" mode="aspectFit|aspectFill|widthFix" wx:for="{{stars}}" wx:key="index" style="width: {{iconSize}};height: {{iconSize}}"> 
+    </image>
+</view>
+<!-- <view class="star">
     <view class="entireStar" wx:for="{{entireStar}}">
         <image class="img" src="/assets/imgs/rating_star_small_on.png">   
         </image>
@@ -12,4 +15,4 @@
         <image class="img" src="/assets/imgs/rating_star_small_off.png">
         </image>
     </view>
-</view>
+</view> -->

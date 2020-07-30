@@ -1,8 +1,11 @@
-/* components/ratingStar/ratingStar.wxss */
-.star{
+.star-wrapper{
+    display: flex;
+}
+
+/* .star{
     display: flex;
 }
 .img{
     width: 15px;
     height: 15px;
-}
+} */
