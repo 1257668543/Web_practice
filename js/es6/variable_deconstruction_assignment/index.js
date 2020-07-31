@@ -81,7 +81,7 @@
 // let [a, b, c, d, e] = 'hello'
 // console.log(a,b,c,d,e)
 // let {length: len} = 'hello'
-// console.log(len)
+// console.log(len) // output: 5
 
 // --------------------------------------------数值和布尔值的解构赋值
 

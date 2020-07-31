@@ -86,7 +86,7 @@ Page({
             // console.log(res)
             let movies = res.data.subjects
             obj.movies = []
-            for (let index = 0; index < movies.length; index++) {
+            for (let index = 0; index < 3; index++) {
                 let element = movies[index]
                 let movie = element.subject || element
                 obj.movies.push(movie)
