@@ -59,7 +59,7 @@
     }
     .front-cover{
       cursor: move;
-      transform: rotateY(0deg);
+      transform: rotateY(180deg);
       transform-origin: 0 50%;
     }
     .front-cover .back{
@@ -156,7 +156,7 @@
             let angle = clamp((centerPoint - evt.pageX + pageSize) / pageSize * -90, -180, 0)
             for(i = 0, j = prefixes.length; i < j; i++) {
                 page.style[prefixes[i] + "Transform"] = `rotateY(${angle}deg)`
-                dino.style[prefixes[i] + "Transform"] = `rotateX(${angle / 2}deg)`
+                dino.style[prefixes[i] + "Transform"] = `rotateX(${angle / 6}deg)`
                 shadow.style[prefixes[i] + "Transform"] = `translateZ(1px) skewX(${angle / 8}deg)`
             }
         }
