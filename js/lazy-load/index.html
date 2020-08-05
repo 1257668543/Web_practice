@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .image-item {
+            display: block;
+            height: 300px;
+            margin-bottom: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=2552391211,1727616630&fm=26&gp=0.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604155678&di=676c255baddad3d6633e85587702cf97&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20190221%2F5ba78c6986a54a61ac7e2b1bf7122568.png"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604155676&di=ab40e978bebe7137b5da67f980cb23fe&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20170524%2F7b383701375448859ed5521231172967_th.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604155676&di=aea3ab1d8cd60456e2ea49c4072031cd&imgtype=0&src=http%3A%2F%2Fdpic.tiankong.com%2F66%2Ftv%2FQJ6266084451.jpg%3Fx-oss-process%3Dstyle%2Fshow"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236275&di=c2497f26ac69a44e8ab7381c5c92fede&imgtype=0&src=http%3A%2F%2Fwww.birdsontheedge.org%2Fwp-content%2Fuploads%2F2015%2F04%2FLight_Out_Hero__Credit_NASA-Earth-Observatory-Photo-NASA-Earth-Observatory.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236275&di=fcbaa82ae7f58b801284fb08a917fe90&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farchive%2F90a973f984ba7e7cd77a044f201ff1ce59a32962.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236274&di=2aabe5d7950afc03448df6da086b5348&imgtype=0&src=http%3A%2F%2Fimg3.duitang.com%2Fuploads%2Fitem%2F201506%2F08%2F20150608110558_Fhc3N.jpeg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236273&di=413d60b093e6c854b7c0c9e14e3d1f3e&imgtype=0&src=http%3A%2F%2Fimg1.gtimg.com%2Ftech%2Fpics%2Fhv1%2F136%2F237%2F2045%2F133036696.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236273&di=a3ed5a125adb2877a31bfb935ff2c310&imgtype=0&src=http%3A%2F%2Fp0.ifengimg.com%2Fpmop%2F2017%2F0427%2F24450ACA116B3C7FB2BF2F1F59D55DB5FA5726FE_size17_w640_h640.jpeg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236272&di=dc84c809d29e296dfa91599500234502&imgtype=0&src=http%3A%2F%2Fpic.people.com.cn%2FNMediaFile%2F2015%2F0423%2FMAIN201504231532000176380746776.jpg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236271&di=d912c9be461ef5f21b5989559c93dfdb&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180720%2Fa9b12f7f6a7847b491c761633a163584.jpeg"
+        alt="">
+    <img class="image-item" src="" lazyload="true"
+        data-original="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1596604236268&di=d85890fb4ac436213996d53ad661015c&imgtype=0&src=http%3A%2F%2Fn3.cmsfile.pg0.cn%2Fgroup2%2FM00%2F2F%2F3A%2FCgqg2VbLB-eAKSdqAAE9_awXTjs989.jpg%3Fenable%3D%26w%3D550%26h%3D836%26cut%3D"
+        alt="">
+
+    <script>
+        // 可视区域的高度
+        let viewHeight = document.documentElement.clientHeight
+
+        function lazyLoad() {
+            let eles = document.querySelectorAll('img[data-original][lazyload]')
+            // console.log(eles)
+            // 判断每一个img是否出现在了可视区域内
+            // Array.from.eles.forEach(item =>{
+            //     console.log(item)
+            // })
+            Array.prototype.forEach.call(eles, function (item, index) {
+                // console.log(item)
+                let rect;
+                rect = item.getBoundingClientRect() //用于获取页面上某个元素的左上右下分别相对于浏览器视窗的位置
+                // console.log(rect)
+                if (rect.bottom >= 0 && rect.top < viewHeight) { // 在可视区域内
+                    !function () {
+                        let img = new Image()
+                        img.src = item.dataset.original
+                        img.onload = function () {
+                            item.src = img.src
+                        }
+                        item.removeAttribute("data-original")
+                        item.removeAttribute("lazyload")
+                    }()
+                }
+            })
+        }
+        lazyLoad()
+        document.addEventListener('scroll',lazyLoad)
+        // window.onscroll = function () {
+        //     lazyLoad()
+        //     // var scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+        //     // console.log("滚动距离" + scrollTop);
+        // }
+    </script>
+</body>
+
+</html>
