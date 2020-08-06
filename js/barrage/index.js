@@ -1,10 +1,10 @@
 let data = [
-    {value: 'cxk的基尼泰妹，我听了10年！', time: 5, color: 'red', speed: 1, fonSize: 22},
-    {value: '前面的兄dei牛逼啊，是我才疏学浅', time: 10, color: '#00a1f5', speed: 1, fonSize: 22},
+    {value: 'cxk的基尼泰妹，我听了10年！', time: 5, color: 'red', speed: 1, fontSize: 22},
+    {value: '前面的兄dei牛逼啊，是我才疏学浅', time: 10, color: '#00a1f5', speed: 1, fontSize: 22},
     {value: '现在这里是lbw广场！', time: 6},
-    {value: '得，得得得，得得得得得得得！', time: 15, color: '#f5f5f5', speed: 1, fonSize: 26},
+    {value: '得，得得得，得得得得得得得！', time: 15, color: '#f5f5f5', speed: 1, fontSize: 26},
     {value: '好，现在我们就要起飞', time: 5},
-    {value: '哇，这个是大佬，我的天呐！', time: 20, color: 'green', speed: 4, fonSize: 20}
+    {value: '哇，这个是大佬，我的天呐！', time: 20, color: 'green', speed: 4, fontSize: 20}
 ]
 
 // 获取所有需要的dom元素
@@ -41,11 +41,59 @@ class CanvasBarrage {
             data: []
         }
         // 合并对象，再挂载到this上
-        Object.assign(defOpts, opts) // assign(a,b)方法参数对象存在相同key值时后面的b(value)覆盖前面的a(value)
+        Object.assign(this,defOpts, opts) // assign(a,b)方法参数对象存在相同key值时后面的b(value)覆盖前面的a(value)
         // 添加属性，用来判断播放暂停，默认是true为暂停
         this.isPaused = true
         // 得到所有的弹幕消息
         this.barrages = this.data.map(item => new Barrage(item, this))
+        // 渲染
+        this.render()
+    }
+    // 渲染canvas绘制的弹幕
+    render() {
+        // 渲染的第一步，清除原来的画布
+        this.clear()
+        // 渲染弹幕
+        this.renderBarrage()
+        if (this.isPaused === false) {
+            // 递归进行渲染
+            requestAnimationFrame(this.render.bind(this))
+        }
+    }
+    clear() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height)
+    }
+    renderBarrage() {
+        // 首先拿到当前视频播放的时间
+        // 要根据该时间和弹幕要展示的时间做对比，来判断是否要展示弹幕
+        let time = this.video.currentTime
+
+        // 遍历所有的弹幕，每一个barrage都是Barrage的实例
+        this.barrages.forEach(barrage => {
+            // 用一个flag来处理是否默认渲染，默认是false
+            // 并且只有在视频播放时间大于等于当前弹幕的展示时间时，才处理
+            if (!barrage.flag  && time >= barrage.time) {
+                // 判断当前这条弹幕是否被初始化过了
+                // 如果isInit是false，那么需要对当前的弹幕进行初始化的操作
+                if (!barrage.isInit) {
+                    barrage.init()
+                    barrage.isInit = true
+                }
+
+                // 弹幕要从右往左渲染，所以x坐标减去当前的弹幕的speed即可
+                barrage.x -= barrage.speed
+                barrage.render()
+
+                // 如果当前弹幕的X坐标比自身的宽度的负值还要小，就表示出去屏幕了
+                if (barrage.x < -barrage.width) {
+                    barrage.flag = true // 把flag设置成true下次就不会渲染了
+                }
+            }
+        });
+    }
+    add(obj) {
+        // 实际上就是往barrages里添加一项Barrage实例
+        this.barrages.push(new Barrage(obj, this))
     }
 }
 
@@ -66,7 +114,7 @@ class Barrage {
         this.color = this.obj.color || this.context.color
         this.speed = this.obj.speed || this.context.speed
         this.opacity = this.obj.opacity || this.context.opacity
-        this.fonSize = this.obj.fontSize || this.context.fontSize
+        this.fontSize = this.obj.fontSize || this.context.fontSize
 
         // 计算每一条弹幕的宽度
         let p = document.createElement('p')
@@ -92,9 +140,58 @@ class Barrage {
         }
 
     }
+
+    // 渲染每一条弹幕
+    render() {
+        // 设置画布文字的字体和字号
+        this.context.ctx.font = `${this.fontSize}px Arial`
+        // 设置画布文字的颜色
+        this.context.ctx.fillStyle = this.color;
+        // 绘制文字
+        this.context.ctx.fillText(this.value, this.x, this.y)
+    }
 }
 
 
 
 // 创建CavasBarrage的实例
 let canvasBarrage = new CanvasBarrage(canvas, video, {data})
+video.addEventListener('play',() => {
+    canvasBarrage.isPaused = false
+    canvasBarrage.render()
+})
+
+// 发送弹幕的方法
+function send () {
+    let value = $txt.value // 输入的内容
+    let time = video.currentTime // 当前视频时间
+    let color = $color.value // 选择的颜色
+    let fontSize = $range.value // 选择的字体大小
+    let obj = { value, time, color, fontSize }
+
+    // 添加弹幕数据
+    canvasBarrage.add(obj)
+    $txt.value = ""
+}
+
+// 点击发送弹幕
+$btn.addEventListener('click',send)
+
+// 回车发送弹幕
+// 方法1
+$txt.addEventListener('keyup', e => {
+    let key = e.keyCode
+    key == 13 && send()
+})
+// 方法2
+// $txt.onkeydown=function(ev){
+//     var event = ev || event
+//     if(event.keyCode == 13){
+//        send()
+//     }
+// }
+
+// 点击暂停时停止弹幕移动
+video.addEventListener('pause', () => {
+    canvasBarrage.isPaused = true
+})
