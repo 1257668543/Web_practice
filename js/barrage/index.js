@@ -42,6 +42,7 @@ class CanvasBarrage {
         }
         // 合并对象，再挂载到this上
         Object.assign(this,defOpts, opts) // assign(a,b)方法参数对象存在相同key值时后面的b(value)覆盖前面的a(value)
+        console.log(this)
         // 添加属性，用来判断播放暂停，默认是true为暂停
         this.isPaused = true
         // 得到所有的弹幕消息

@@ -69,7 +69,7 @@
                 rect = item.getBoundingClientRect() //用于获取页面上某个元素的左上右下分别相对于浏览器视窗的位置
                 // console.log(rect)
                 if (rect.bottom >= 0 && rect.top < viewHeight) { // 在可视区域内
-                    !function () {
+                    !function () { // 自执行函数写法2
                         let img = new Image()
                         img.src = item.dataset.original
                         img.onload = function () {
