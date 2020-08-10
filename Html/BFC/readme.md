@@ -22,5 +22,5 @@
     overflow的值不为visible的元素；
     弹性盒 flex boxes (元素的display: flex或inline-flex)；
 
-    但其中，最常见的就是overflow:hidden、float:left/right、position:absolute。也就是说，每次看到这些属性的时候，就代表了该元素以及创建了一个BFC了。
+    但其中，最常见的就是overflow:hidden、float:left/right、position:absolute。也就是说，每次看到这些属性的时候，就代表了该元素已经创建了一个BFC了。
 

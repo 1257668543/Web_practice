@@ -93,7 +93,7 @@ Component({
     },
     // 获取当月空出的天数
     createEmptyGrids(year, month){
-      let week = new Date(Date.UTC(year, month-1,1)).getDay(),
+      let week = new Date(Date.UTC(year, month-1, 1)).getDay(),
           emptyGridsBefore = [],
           emptyGridsAfter = [],
           emptyDays = (week == 0 ? 7 : week);
