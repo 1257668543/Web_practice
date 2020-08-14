@@ -26,17 +26,33 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    // const self = this
+    // wx.cloud.callFunction({
+    //   name: 'getGroup',
+    //   success: function(res) {
+    //     console.log(res)
+    //     self.setData({
+    //       groupList: res.result.data
+    //     })
+    //   },
+    //   fail: function(error) {
+    //     console.log(error)
+    //   }
+    // })
+
+    // 蜗牛onShow（）
     const self = this
     wx.cloud.callFunction({
       name: 'getGroup',
-      success: function(res) {
+      data:{},
+      success(res) {
         console.log(res)
         self.setData({
-          groupList: res.result.data
+          groupList: res.result
         })
       },
-      fail: function(error) {
-        console.log(error)
+      fail() {
+        console.log(res)
       }
     })
   },
