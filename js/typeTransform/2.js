@@ -9,7 +9,7 @@ console.log(+'1') // 1
 console.log(+[]) // 0
 console.log(+['1']) // 1
 
-// ToPrimitive(input, [preferredType])
+// ToPrimitive(input, [preferredType]) // 供js引擎使用的内部函数
 // input 表示要处理的值
 // preferredType，非必填，表示希望转换成的类型，Number 和 String
 // 如果 preferredType没传，当input是日期类型时，preferredType相当于String，其他情况都相当于Number

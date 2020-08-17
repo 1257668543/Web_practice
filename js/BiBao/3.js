@@ -1,4 +1,4 @@
-// 实现一个函数执行出来的结果都是累计的
+// 实现一个函数执行出来的结果都是累加的
 var count = 0
 function test () {
     count++
@@ -25,4 +25,4 @@ var result = add()
 result()
 result()
 result()
-result = null // 主动销毁闭包在内存中保存的add的AO
+// result = null // 主动销毁闭包在内存中保存的add的AO
