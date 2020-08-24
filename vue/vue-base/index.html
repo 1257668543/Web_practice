@@ -4,6 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+      .red{
+        color: red;
+        font-size: 30px;
+      }
+      [v-cloak]{
+        display: none;
+      }
+    </style>
     <script src="https://cdn.bootcdn.net/ajax/libs/vue/2.6.12/vue.common.dev.js"></script>
 </head>
 <body>
@@ -21,19 +30,41 @@
           <span v-html="newMessage"></span><br/>
         </div> -->
 
-        <div class="count" style="margin-left: 100px;">
+        <!-- <div class="count" style="margin-left: 100px;">
           <p>{{count}}</p>
           <button v-on:click="add">+</button>
           <button @click="reduce">-</button>
-        </div>
+        </div> -->
+
+        <!-- <div class="model">
+          <p>{{message}}</p>
+          <p>
+            v-model:
+            <input type="text" v-model="message"/>
+          </p>
+        </div> -->
+
+        <!-- <div class="pic">
+          <img :src="imgSrc" alt="">
+        </div>-->
+
+        <!-- <div @click="changeColor" v-bind:class="{red: isRed}" :class="{className1, className2}">蜗牛很腼腆</div> -->
+
+        <!-- <div v-pre>{{message}}</div> -->
+
+        <!-- <div v-cloak>{{message}}</div> -->
+
+        <div v-once>{{message}}</div>
+        <input type="text" v-model="message"/>
     </div>
-    
+
     <script>
         var app = new Vue({
             el: '#app',
             data: {
                 message: 'Hello world',
                 newMessage: '<h2>Hello Vue!</h2>',
+                imgSrc: 'https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2484800480,4151368444&fm=26&gp=0.jpg',
                 isSure: false,
                 list: ['a', 'b', 'c', 'd'],
                 people:  [
@@ -41,7 +72,10 @@
                   { name: '浩南', age: 19 },
                   { name: '元隆', age: 20 }
                 ],
-                count: 0
+                count: 0,
+                isRed: false,
+                className1: 'active',
+                className2: 'wrapper'
             },
             methods: {
               add() {
@@ -50,6 +84,10 @@
               },
               reduce() {
                 this.count--
+              },
+              changeColor() {
+                console.log(123)
+                this.isRed = !this.isRed
               }
             },
 
