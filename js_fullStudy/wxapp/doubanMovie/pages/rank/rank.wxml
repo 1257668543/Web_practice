@@ -1,0 +1,9 @@
+<nav-bar title="榜单" statusBarColor="#42BD55"></nav-bar>
+<view class="container">
+    <view class="row" wx:for="{{rankList}}" wx:key="index">
+        <image class="img" src="https://img1.doubanio.com/img/files/file-1543460329.png"></image>
+        <view class="rankInfoList">
+            <rankInfo class="item" wx:for="{{item.movies}}" wx:for-item="items" wx:key="index" rankInfo="{{items}}" index="{{index+1}}"></rankInfo>
+        </view>
+    </view>
+</view>

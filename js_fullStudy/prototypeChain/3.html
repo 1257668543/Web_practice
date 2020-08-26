@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var obj = {}    // 原型？
+
+
+        var obj1 = new Object()
+
+
+
+        // Object.create(原型)
+        var obj = {
+            name: 'wn',
+            age: 18
+        }
+        var obj1 = Object.create(obj)
+        // obj1.__proto__ == obj
+
+
+
+        // 网易面试题
+        // 所有的对象最终都会继承自 Object.prototype ? 错，用Object.create(null)创建出来的对象没有原型可以继承
+
+        var obj2 = Object.create(null)
+        // obj2.name = 'wn'
+
+
+        // obj2.__proto__ = {name: 'wn'}
+        // obj2.name // undefined, 此时__proto__只是obj2中的一个属性，不代表原型
+
+
+        var obj3 = Object.create(obj2)
+
+
+
+
+
+    </script>
+</body>
+</html>

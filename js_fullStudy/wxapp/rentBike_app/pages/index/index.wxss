@@ -1,0 +1,124 @@
+/**index.wxss**/
+#map{
+  position: relative;
+}
+.header{
+  position: absolute;
+  display: flex;
+  width: 213.44rpx;
+  height: 66.7rpx;
+  background-color: #ffffff;
+  left: 278.667rpx;
+  border-radius: 15rpx;
+}
+.bike{
+  color: #999999;
+  font-size: medium;
+  font-weight: 550;
+  flex: 1;
+  text-align: center;
+  line-height: 66.7rpx;
+}
+.ebike{
+  color: black;
+  font-size: medium;
+  font-weight: 550;
+  flex: 1;
+  text-align: center;
+  line-height: 66.7rpx;
+}
+.bottom_line{
+  background-color: #eb552d;
+  width: 40rpx;
+  height: 6.67rpx;
+  position: absolute;
+  left: 142rpx;
+  top: 28px;
+  border-radius: 25%;
+}
+.notice_top{
+  position: absolute;
+  display: flex;
+  width: 690rpx;
+  height: 106rpx;
+  top: 76rpx;
+  left: 30.5rpx;
+  background-color: #ffffff;
+  border-radius: 35rpx;
+}
+.notice1{
+  font-weight: 550;
+  margin-left: 160rpx;
+  text-align: center;
+  line-height: 106rpx;
+}
+.notice2{
+  color: #eb552d;
+  font-weight: 550;
+  line-height: 106rpx;
+  margin-left: 33rpx;
+  text-align: center;
+}
+.rightArrow{
+  margin-left: 35rpx;
+  width: 27rpx;
+  height: 27rpx;
+}
+.notice_bottom{
+  position: absolute;
+  width: 690rpx;
+  height: 80rpx;
+  bottom: 160rpx;
+  left: 30.5rpx;
+  background-color: #ffffff;
+  border-radius: 25rpx;
+}
+.notice3{
+  position: relative;
+  width: 690rpx;
+  color: #6c6d6f;
+  font-weight: 550;
+  line-height: 80rpx;
+}
+.notice3 text{
+  margin-left: 100rpx;
+}
+.right{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  left: 626rpx;
+  top: 28.5rpx
+}
+.bell{
+  position: absolute;
+  width: 30rpx;
+  height: 30rpx;
+  left: 33.5rpx;
+  top: 28.5rpx
+}
+.scan{
+  position: absolute;
+  width: 690rpx;
+  height: 113rpx;
+  bottom: 25rpx;
+  left: 30.5rpx;
+  background-color: #26292f;
+  border-radius: 25rpx;
+}
+.scan1{
+  text-align: center;
+  position: relative;
+  width: 690rpx;
+  color: #ffffff;
+  font-weight: 550;
+  line-height: 113rpx;
+  letter-spacing: 2rpx;
+}
+.scaning{
+  position: absolute;
+  width: 32rpx;
+  height: 32rpx;
+  left: 230rpx;
+  top: 40rpx
+}
