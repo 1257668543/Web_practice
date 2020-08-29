@@ -13,3 +13,12 @@
   - src/index.js #root ReactDOM.render(<App />, rootEle);
   - 每个组件    返回 html 的函数 组件
   - public/index.html
+
+  - 组件化
+    import 来打理
+    App 根组件
+    MyComponent 子组件
+
+    数据接口 wx.request -> ajax fetch
+    生命周期 onLoad -> ?
+    pages 切换 react-router
