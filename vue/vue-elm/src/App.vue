@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <!-- header 组件 -->
-    <VHeader></VHeader>
+    <v-header :seller="seller"></v-header>
     <router-view/>
   </div>
 </template>
@@ -17,6 +17,7 @@ export default {
       seller: {
         id: qs.parse(location.search).id
       },
+      sellerInfo: {}
     };
   },
   created() {
@@ -27,7 +28,9 @@ export default {
       getSeller({
         id: this.seller.id,
       }).then((seller) => {
-        console.log(seller);
+        // console.log(seller);
+        this.seller = Object.assign(this.seller, seller)
+        // console.log(this.seller)
       });
     },
   },
