@@ -6,6 +6,7 @@
           <h1 class="name">{{seller.name}}</h1>
           <div class="star-wrapper">
             <!-- 星星 -->
+            <Stars :starNum='seller.foodScore'></Stars>
           </div>
           <div class="title">
             <div class="line"></div>
@@ -37,6 +38,7 @@
 
 <script>
 import SupportIco from '@/components/support-ico/support-ico' 
+import Stars from '@/components/stars/stars'
 
 export default {
   props: {
@@ -51,7 +53,8 @@ export default {
     }
   },
   components: {
-    SupportIco
+    SupportIco,
+    Stars
   },
   methods: {
     hide() {
