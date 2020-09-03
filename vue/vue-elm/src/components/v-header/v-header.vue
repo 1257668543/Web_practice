@@ -55,7 +55,7 @@ export default {
   created() {
     setTimeout(() => {
     this.sellerInfo = this.seller
-    console.log(this.seller)
+    // console.log(this.seller)
     }, 1000)
   },
   methods: {
