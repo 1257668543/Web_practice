@@ -76,4 +76,5 @@ export default {
       .router-link-exact-active
         color $color-red
         border-bottom 2px solid $color-red
+        box-sizing border-box
 </style>

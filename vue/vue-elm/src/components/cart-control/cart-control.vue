@@ -22,14 +22,17 @@ export default {
   },
   methods: {
     decrease() {
-      this.food.count--
+      if (this.food.count) {
+        this.food.count--        
+      }
     },
-    add() {
+    add(event) {
       if (!this.food.count) {
-        this.$set(this.food, 'count', 1)
+        this.$set(this.food, 'count', 1) // 新增或修改某个对象中的属性，并让vue进行响应式渲染
       } else {
         this.food.count++
       }
+      this.$emit('add', event.target)
     }
   }
 };
