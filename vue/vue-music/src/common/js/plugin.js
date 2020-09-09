@@ -14,6 +14,9 @@ Toast.install = function(Vue, options) {
       opt.defaultType = type // 如果传了type，那么就使用该type作为位置展示
     }
 
+    if (document.getElementsByClassName('vue-toast').length) {
+      return
+    }
     let toastTpl = Vue.extend({
       template: '<div class="vue-toast toast-'+ opt.defaultType +'">'+ tips +'</div>'
     })
