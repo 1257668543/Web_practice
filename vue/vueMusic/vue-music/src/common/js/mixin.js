@@ -9,7 +9,6 @@ export const searchMixin = {
   },
   methods: {
     onQueryChange(e) {
-      // console.log(e)
       this.query = e.trim() // 去空格
     }
   }

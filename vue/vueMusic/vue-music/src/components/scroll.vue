@@ -27,7 +27,7 @@ export default {
         this.scroll.on('scroll', (pos) => {
           this.$emit('scroll', pos)
         })
-    }
+      }
 
       // 是否派发滚动到底部事件，用于上拉加载
       if (this.pullup) {
