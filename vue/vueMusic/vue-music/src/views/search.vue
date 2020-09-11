@@ -3,20 +3,84 @@
     <div class="search-box-wrapper">
       <v-search-box @query="onQueryChange"></v-search-box>
     </div>
+    <!-- 热搜 -->
+    <div class="shortcut-wrapper" ref="shortcutWrapper">
+      <v-scroll>
+        <div>
+          <ul>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1ad</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1213</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>145</li>
+            <li>1</li>
+            <li>5531</li>
+            <li>1</li>
+            <li>1</li>
+            <li>ad1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1ccas</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+            <li>1</li>
+          </ul>
+        </div>
+      </v-scroll>
+    </div>
   </div>  
 </template>
 
 <script>
 import searchBox from '@/components/searchBox'
+import { searchMixin } from '@/common/js/mixin'
+import scroll from '@/components/scroll'
 
 export default {
   components: {
-    'v-search-box': searchBox
+    'v-search-box': searchBox,
+    'v-scroll': scroll
   },
+  mixins: [searchMixin],
   methods: {
-    onQueryChange(e) {
-      console.log(e)
-    }
+
   }
 }
 </script>
