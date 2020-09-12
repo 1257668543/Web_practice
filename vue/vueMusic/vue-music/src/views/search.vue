@@ -63,11 +63,17 @@ export default {
           this.hotKey = res.result.hots.slice(0, 10)
       })
     },
-    ...mapActions(['deleteSearchHistory', 'clearSearchHistory', 'saveSearchHistory']),
+    ...mapActions([
+      'deleteSearchHistory', 
+      'clearSearchHistory', 
+      'saveSearchHistory',
+      'selectPlaySong'
+      ]),
     saveSearch(song) {
       // 保存历史记录
       this.saveSearchHistory(this.query)
-      console.log(song)
+      // 播放音乐
+      this.selectPlaySong(song)
     }
   },
   computed: {
