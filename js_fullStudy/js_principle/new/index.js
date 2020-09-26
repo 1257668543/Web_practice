@@ -43,9 +43,9 @@ function Person(name, age) {
 // console.log(obj)
 
 function myNew() {
-  // 创建一个实例对下昂
+  // 创建一个实例对象
   let obj = {}
-  // 渠道啊外部传进来的构造器
+  // 取到外部传进来的构造器
   let Constructor = Array.prototype.shift.call(arguments)
   // 实现继承，要实例可以访问构造器的属性
   obj.__proto__ = Constructor.prototype
