@@ -1,0 +1,45 @@
+<style>
+  * {
+    margin: 0; padding: 0;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    height: 300px;
+  }
+  .wrapper {
+    display: flex;
+    /* flex: 1; */
+    flex-direction: row;
+    flex-wrap: nowrap;
+  }
+  .item {
+    /* flex: 1; */
+    outline: 1px solid red;
+    /*  */
+    width: 333.3333333333vw;
+    /* height: 33.33333333333vw; */
+    height: 0;
+    padding-top: 33.3333333333%;
+    /* padding-top 百分比相对宽度来计算 */
+  }
+</style>
+
+<div class="container">
+  <div class="wrapper">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="wrapper">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+  <div class="wrapper">
+    <div class="item"></div>
+    <div class="item"></div>
+    <div class="item"></div>
+  </div>
+</div>
