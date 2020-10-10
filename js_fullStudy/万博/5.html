@@ -1,0 +1,21 @@
+<body>
+  <div class="container">
+    <div class="subA">subA</div>
+    <div class="subB">subB</div>
+  </div>
+  <script>
+    // e.target 目标对象
+    // e.currentTarget  谁绑定了这个事件
+    document.querySelector(".subA").addEventListener("click", (e) => {
+      console.log("subA click");
+      console.log(e.target.getAttribute("class"));
+    });
+    document.querySelector(".container").addEventListener("click", (e) => {
+      console.log("container click");
+      console.log(e.target.getAttribute("class"));
+    })
+    // requestIdleCallback // 不重要的任务放到这个api中，当浏览器空闲时才会执行
+    // 非常耗时的任务 放到 另外一个线程中执行(web-worker) 不会阻塞主线程 js
+    // new Worker('./xxx.js')
+  </script>
+</body>

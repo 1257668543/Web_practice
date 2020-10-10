@@ -1,0 +1,19 @@
+<script>
+  // let arr = []
+  // arr.push()  // Array.prototype
+  // function foo() {}
+  // foo.call()  // Function.prototype
+  Object.prototype.a = 'Object';
+  Function.prototype.a = 'Function';
+  function Person() { };
+  var child = new Person();
+  console.log(Person.a);  // Function
+  console.log(child.a);   // Object
+  console.log(child.__proto__.__proto__.constructor.constructor.constructor);
+  // child.__proto__ == Person.prototype
+  // Person.prototype.__proto__ == Object.prototype
+  // Object.prototype.constructor = Object
+  // Object 是内置的函数
+  // Object.constructor = Function
+  // Function.constrctor = Function
+</script>
