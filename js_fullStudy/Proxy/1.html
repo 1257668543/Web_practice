@@ -1,0 +1,40 @@
+<script>
+  let obj = {
+    a: 1
+  };
+  // delete get set hasOwnProperty(当前这个对象)
+  // 
+  Object.getPrototypeOf(obj)
+  // obj.__proto__
+  Object.setPrototypeOf(obj, {b: 2})
+  // 'a' in obj   {查找原型链}
+  console.log(obj);
+  for (let k in obj) {
+    console.log(k);
+  }
+
+
+  obj.f = () => {};
+  let newObj = new Proxy(obj, {
+    get(target, k) {
+      // if (targe.hasOwnProperty(k)) {}
+      return Reflect.get(target, k);
+    },
+    set() {},
+    defineProperty() {},
+    defineProperty() {},
+    has() {},
+    // apply() {
+    //   console.log('func call');
+    // }
+  })
+  newObj.f();
+  let f = () => {}
+  let newf = new Proxy(f, {
+    apply(...rest) {
+      console.log('f call');
+      return Reflect.apply(...rest)
+    }
+  })
+  newf();
+</script>
