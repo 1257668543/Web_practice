@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script>
+    // 函数是一等公民：函数和其他类型（bool, string, number）一样
+    // 都可以函数传递也可以作用函数的返回值返回
+    // 高阶函数
+    function repeat(func, times, wait) {
+      function repeated (word) {
+        setTimeout(() => {
+          if (times !== 0) {
+            times--
+            func(word)
+            repeated(word)
+          }
+        }, wait)
+      }
+      return repeated
+    }
+    const repeatFunc = repeat(alert, 4, 3000)
+    repeatFunc("hello world")
+  </script>
+</body>
+
+</html>
