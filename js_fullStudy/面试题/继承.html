@@ -1,0 +1,42 @@
+<script>
+  // 题目
+
+  // 填充 inherit 完成输出。
+  function inherit(obj, funcObj) {
+    let c = function con (name) {
+      // 属性的继承
+      obj.call(this, name)
+    }
+    // 方法的继承
+    c.prototype.__proto__ = obj.prototype
+    for ( let i in funcObj ) {
+      c.prototype[i] = funcObj[i]
+    }
+    return c;
+  }
+
+  let animalNum = 0;
+  function Animal(name) {
+    animalNum++;
+    this.name = name;
+  }
+  Animal.prototype.getName = function () {
+    return this.name;
+  };
+  const Cat = inherit(Animal, {
+    say: function () {
+      console.log(`NO${animalNum}:${this.getName()}`);
+    }
+  });
+  const cat1 = new Cat('小花');
+  cat1.say(); // NO1:小花
+
+  function Dog()
+  function Bar() {
+    Dog.call(this);
+  }
+  // Bar.prototype = Object.create(Dog.prototype)
+  // Bar.prototype.__proto__ = Dog.prototype
+  Object.setPrototypeOf(Bar.prototype, Dog.prototype)
+  // Bar 继承 Dog
+</script>
