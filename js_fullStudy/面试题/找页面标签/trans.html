@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <div id="app">
+    <h2>
+      <h1>
+      </h1>
+    </h2>
+  </div>
+  <hr />
+  <script>
+    function walk(root) {
+      // console.log(root);
+      if (root.getAttribute('id') === 'app') {
+        console.log('-----', root);
+      }
+      if (root.children) {
+        for (let child of root.children) {
+          // 所有的子节点 还要子节点的children
+          walk(child)
+        }
+      }
+    }
+    const root = document.documentElement
+    walk(root)
+  </script>
+</body>
+
+</html>
