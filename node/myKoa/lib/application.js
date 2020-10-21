@@ -2,7 +2,8 @@ const http = require('http')
 let EventEmitter = require('events')
 let context = require('./context')  // 上下文
 let request = require('./request')
-let response = require('./response') 
+let response = require('./response')
+const { RSA_NO_PADDING } = require('constants')
 
 class Koa extends EventEmitter {
   constructor () {
@@ -22,6 +23,12 @@ class Koa extends EventEmitter {
     const request = ctx.request = Object.create(this.request)
     const response = ctx.response = Object.create(this.response)
     // 交叉赋值
+    ctx.req = request.req = response.req = req
+    ctx.res = request.res = response.res = res
+    request.ctx = response.ctx = ctx
+    request.response = response
+    response.request = request
+    return ctx
   }
 
   handleRequest (req, res) {
