@@ -1,0 +1,36 @@
+<script>
+  function create(o) {
+    let obj = {}
+    Object.setPrototypeOf(obj, o)
+    return obj;
+  }
+  /*
+  {
+    xxx: xx
+    __proto__: o
+  }
+  */
+ let A = {}, B = {}, C = {}
+ function foo() {
+   console.log(this === A);
+ }
+ foo.bind(A).bind(B).bind(C)()
+ // 上一表达式等价于下式
+ let fna = foo.bind(A)    // foo 内部 指向 A
+ let fnb = fna.bind(B)    // 改变的是 fna
+ let fnc = fnb.bind(C)    // fnb 内部的 this
+ fnc();    // foo     结合2.html(myBind实现)理解
+
+//  import --- export/export default            es规范
+//  require --- exports === module.exports      民间规范，js手写
+
+// cookie (kb) 和 localStorage (5mb) sessionStorage 都属于前端存储
+// 如果 cookie 里面有内容，浏览器自动把cookie当做请求头传输给后端
+// cookie 存什么东西，怎么存，哪些属性
+// domain（生效的域名）.baidu.com   map.baidu.com
+// path（生效的路径） / /a /b
+// expires（过期的时间）
+// httpOnly 只在http环境下传输，js无法操作（减少 XSS 攻击）
+// secure 只在https环境下传输
+// sameSite strict(只有在baidu.com请求api.baidu.com 才会传输baidu.com的cookie)/none/lax(有时候可以有时候不可以)   (CSRF 跨站请求伪造)
+</script>
