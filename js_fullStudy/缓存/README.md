@@ -16,3 +16,4 @@ ctx.set('last-modified', 文件最后修改时间)
 # 让缓存失效
 xxx.js?v=1234
 xxx[1234].js
+
