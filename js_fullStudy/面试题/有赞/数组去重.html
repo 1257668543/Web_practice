@@ -1,0 +1,44 @@
+<script>
+
+  /**
+ * 2.数组去重
+ * 
+ * @example
+ * [1,'1',1]                            -> [1,'1']
+ * [{a: 1}, {b: 1}, {a: 1}]             -> [{a: 1}, {b: 1}]
+ * [{a: 1, b: 2}, {b: 1}, {a: 2, b: 1}] -> [{a: 1, b: 2}, {b: 1},{a: 2, b: 1}]
+ * [[1, {a: 1}], [2], [3], [1, {a: 1}]] -> [[1, {a: 1}], [2], [3]]
+ */
+// [1, 2, 3] [1, 3, 2]
+function is_array() {}
+function is_object() {}
+//
+function type(v) {
+  // [object Array]
+  return Object.prototype.toString.call(v).slice(8, -1) 
+} 
+let whiteList = ['Number', 'String'] // ...
+function is(v1, v2) {
+  if (type(v1) === type(v2) && whiteList.includes(type(v1))) {
+    return v1 === v2;
+  }
+  if (type(v1) === type(v2) && type(v1) === 'Array') {
+    return is_array(v1, v2);
+  }
+  if (type(v1) === type(v2) && type(v1) === 'Object') {
+    return is_object(v1, v2);
+  }
+}
+
+function unique(arr) {
+  let res = [];
+  for (let item of arr) {
+    if (!res.find(x => x === item)) {
+      res.push(item)
+    }
+  }
+  return res;
+}
+console.log(unique([1,'1',1]));
+
+</script>
