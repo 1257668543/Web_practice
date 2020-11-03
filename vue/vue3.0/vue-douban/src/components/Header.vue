@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background-color: #42bd56">
     <van-nav-bar
       :title="title"
       :left-text="leftText"
@@ -58,21 +58,10 @@ export default {
 }
 </script>
 
-<style lang="less">
-.van-nav-bar{
-  background-color: #42bd56;
-  color: #fff;
-  &::after{
-    border-bottom: none;
-  }
-  .van-nav-bar__text{
-    color: #fff;
-  }
-  .van-icon{
-    color: #fff;
-  }
-  .van-nav-bar__title{
-    color: #fff;
+<style lang="less" scoped>
+.van-nav-bar {
+  &::after {
+    border-bottom-width: 0px;
   }
 }
 </style>
