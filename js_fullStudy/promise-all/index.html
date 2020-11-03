@@ -1,0 +1,45 @@
+<script>
+  function sleep(t) {
+    return new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve(t);
+      }, t)
+    })
+  }
+  Promise.all([sleep(1000), sleep(500), 
+  sleep(300), sleep(400)])
+  .then(r => {
+    console.log(r); // ? 时候 输出?
+    // 1000ms 输出 [1000, 500, 300, 400]
+  })
+  // 4个同时启动
+  // 4个接口同时发出 limit: 2
+  // 如果 并发限制 为 2:
+  // 1000ms 3 -> 1000ms
+  // 500ms 1 -> 500ms
+  // 300ms 开始计时 2 -> 300ms
+  // 400ms 开始计时 4 -> 400ms
+  Promise.myAll = function(promiseArr) {
+    return new Promise((resolve, reject) => {
+      let res = [], count = 0;
+      // promiseArr[0].then( count ++ )
+      // promiseArr[1].then( count ++ )
+      // promiseArr[2].then( count ++ )
+      // promiseArr[3].then( count ++ )
+      for (let i = 0; i < promiseArr.length; i ++) {
+        // i 原来在数组里面的顺序
+        promiseArr[i].then((r) => {
+          // 最终成功的时候 结果顺序与数组顺序一致
+          res[i] = r;
+          count ++;
+          if (count === promiseArr.length) {
+            resolve(res)
+          }
+        })
+        .catch(() => {
+          reject()
+        })
+      }
+    })
+  }
+</script>
