@@ -1,32 +1,39 @@
 <template>
   <div class="home">
     <v-header title="豆瓣电影评分" :leftArrow="false"></v-header>
-    <movie-section :section="test"></movie-section>
+    <movie-section v-for="(item, index) in sectionData" :key="item.type" :section="item" :movie_key="movie_key[index]"></movie-section>
   </div>
 </template>
 
 <script>
-
-import { ref } from 'vue'
+// @ is an alias to /src
 import Header from '@/components/Header.vue'
 import MovieSection from '@/components/MovieSection.vue'
+import { ref } from 'vue'
+import { getMovieSection } from '@/utils/movie'
 
 export default {
   name: 'Home',
   components: {
     'v-header': Header,
-    'movie-section': MovieSection
+    MovieSection
   },
   setup() {
-    const test = ref({movies: [
-      {image: 'https://img.yzcdn.cn/vant/cat.jpeg', title: '喵呜', rating: {stars: [1, 1, 1, 1, 0], score: 8.5}},
-      {image: 'https://img.yzcdn.cn/vant/cat.jpeg', title: '喵呜', rating: {stars: [1, 1, 1, 1, 0], score: 8.5}},
-      {image: 'https://img.yzcdn.cn/vant/cat.jpeg', title: '喵呜', rating: {stars: [1, 1, 1, 1, 0], score: 8.5}},
-    ],
-    type: "hot"
+    const sectionData = ref([])
+    const movie_key = [
+      {key: 'movieOnInfoList', params: {}, name: '影院热映'},
+      {key: 'comingList', params: {ci: 83, token: '', limit: 10}, name: '即将上映'}
+    ]
+    const promiseArr = movie_key.map(function(item) {
+      return getMovieSection(item.key, item.params)
+    })
+    Promise.all(promiseArr).then(function(res) {
+      sectionData.value = res
+      console.log(res);
     })
     return {
-      test
+      sectionData,
+      movie_key
     }
   }
 }
