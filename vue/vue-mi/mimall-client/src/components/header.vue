@@ -1,46 +1,23 @@
 <template>
-  <div class="wrap">
-    <div class="top">
-      <div class="container">
-        <div class="fr">
-          <div class="fl item user">
-            <div class="login">
-              <a href="" @mouseover="highLight" @mouseleave="fade" class="log"
-                >登录</a
-              >
-              <a href="" @mouseover="highLight" @mouseleave="fade" class="reg"
-                >注册</a
-              >
-            </div>
+  <div class="header">
+    <div class="container">
+      <div class="header-top">
+        <div class="logo" @click="toHome"></div>
+        <div class="nav-part"></div>
+        <ul class="tab-list">
+          <li class="tab-item">限时抢购</li>
+          <li class="tab-item">企业采购</li>
+        </ul>
+        <div class="icon-wrap fr">
+          <div class="icon">
+            <a-icon type="shopping-cart" class="icon-cart" />
           </div>
-          <span class="fl line"></span>
-          <div class="fl help">
-            <a href="https://www.xiaomiyoupin.com/help" class="m-safe-anchor"
-              >帮助中心</a
-            >
-          </div>
-          <span class="fl line"></span>
-          <div class="fl m-download">
-            <a href="https://www.xiaomiyoupin.com/download" class="download">
-              <img src="@/assets/Header-icon/phone.png" class="p-icon" />
-              下载APP
-            </a>
-          </div>
-          <span class="fl line"></span>
-          <div class="fl clauses" @mousemove="showNav" @mouseleave="hideNav">
-            <div class="m-clauses">
-              <a href="#" class="m-safe">资质证照&nbsp;/&nbsp;协议规则</a>
-              <a-icon type="down" class="icon-down" />
-            </div>
-            <div class="clauses-nav">
-              <ul class="nav-list">
-                <li>
-                  <a href="" class="quality">资质证照</a>
-                </li>
-                <li>
-                  <a href="" class="rules">协议规则</a>
-                </li>
-              </ul>
+        </div>
+        <div class="search fr">
+          <div class="search-form">
+            <a-icon type="search" class="search-icon"/>
+            <div class="search-input-con">
+              <input type="text" placeholder="搜一搜">
             </div>
           </div>
         </div>
@@ -51,138 +28,85 @@
 
 <script>
 export default {
-  data() {
-    return {
-      clausesNav: false,
-    };
-  },
   methods: {
-    highLight() {},
-    fade() {},
-    showNav() {
-      this.clausesNav = true;
-    },
-    hideNav() {
-      this.clausesNav = false;
+    toHome() {
+      this.$router.push("/a");
     },
   },
 };
 </script>
 
-<style lang='less' scoped>
-.top,
-.top a {
-  color: #e7e7e7;
-}
-.top {
-  height: 46px;
-  background: #333;
-  font-size: 14px;
+<style lang="less" scoped>
+.header {
   position: relative;
-  z-index: 105;
+  height: 51px;
+  z-index: 101;
+  padding-top: 20px;
+  margin-bottom: 5px;
+  background-color: #fff;
 }
 .container {
   width: 1080px;
   margin: 0 auto;
 }
+.header-top {
+  position: relative;
+  padding-right: 40px;
+  z-index: 9;
+}
+.logo {
+  float: left;
+  width: 123px;
+  height: 51px;
+  background: url(https://www.xiaomiyoupin.com/static3/media/logo@2x.cf8cc6a8.png)
+    50% no-repeat;
+  background-size: 100%;
+  line-height: 50px;
+  text-align: center;
+  font-size: 12px;
+  cursor: pointer;
+}
+.nav-part {
+  float: left;
+  margin-left: 10px;
+  margin-right: 70px;
+  width: 60px;
+  height: 51px;
+  line-height: 51px;
+}
+.tab-list {
+  float: left;
+  width: 420px;
+  overflow: hidden;
+}
+.tab-item {
+  float: left;
+  margin-right: 32px;
+  height: 51px;
+  line-height: 57px;
+  font-size: 18px;
+  color: #666;
+  -webkit-transition: color 0.2s ease;
+  -o-transition: color 0.2s ease;
+  transition: color 0.2s ease;
+}
+.icon-wrap {
+  position: absolute;
+  right: 6px;
+  top: 18px;
+}
 .fr {
   float: right;
 }
-.item {
+.icon {
   position: relative;
-  margin-left: 5px;
-  text-align: center;
-}
-.fl {
-  float: left;
-}
-.line {
-  margin: 17px 3px 0 6px;
-  display: inline-block;
-  height: 16px;
-  vertical-align: middle;
-  border-right: 1px solid #666;
-}
-.help {
-  position: relative;
-  text-align: center;
-  height: 48px;
-  line-height: 48px;
-  margin-right: 8px;
-  margin-left: 11px;
-}
-.m-download {
-  position: relative;
-  margin-left: 5px;
-  text-align: center;
-}
-.download {
-  text-align: left;
-  left: 0;
-  padding-left: 30px;
-  display: block;
-  height: 48px;
-  line-height: 48px;
-  overflow: hidden;
-  margin-right: 5px;
-  position: relative;
-}
-.p-icon {
-  left: 1px;
-  top: 13px;
-  position: absolute;
-  width: 22px;
-  height: 22px;
-}
-.clauses {
-  position: relative;
-  text-align: center;
-  padding-right: 40px;
-  padding-left: 11px;
-}
-.m-clauses {
-  height: 48px;
-  line-height: 48px;
-  text-align: center;
-}
-.icon-down {
   width: 30px;
-  height: 30px;
-  position: absolute;
-  top: 16px;
-  right: 10px;
 }
-.clauses-nav {
-  width: 160px;
-  position: absolute;
-  left: 0;
-  top: 48px;
-  display: block;
-  overflow: hidden;
-  box-shadow: 0 3px 28px rgba(0, 0, 0, 0.1);
-  transition: all 0.3s cubic-bezier(0, 1, 0.5, 1);
-  background: #fff;
+.icon-cart {
+  display: inline-block;
+  font-size: 26px;
 }
-.nva-list {
-  background-color: #fff;
-  list-style: none;
-  li {
-    height: 35px;
-    line-height: 35px;
-    padding: 0 10px;
-    a {
-      display: block;
-      font-size: 14px;
-      color: #666;
-    }
-  }
-}
-.login {
-  margin-right: 8px;
-  height: 48px;
-  line-height: 48px;
-  a {
-    margin-left: 8px;
-  }
+.search{
+  width: 296px;
 }
 </style>

@@ -1,14 +1,17 @@
 <template>
   <div class="home-wrap">
   <!-- 首页容器 -->
+    <siteTop />
     <Header />
   </div>
 </template>
 
 <script>
-import Header from '@/components/header.vue'
+import siteTop from '@/components/Site-top.vue'
+import Header from '@/components/Header.vue'
 export default {
   components: {
+    siteTop,
     Header
   }
 };
