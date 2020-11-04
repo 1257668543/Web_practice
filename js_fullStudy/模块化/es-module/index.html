@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <!-- <script src="./a.js"></script> -->
+  <!-- <script src="./b.js"></script> -->
+  <script type="module">
+    // vue 路由懒加载
+    // import xxx from 'xxx'
+    // ES(6)-module 在代码静态分析(编译)的时候就知道导入了什么东西
+    // commonJS 在代码运行的时候
+    // commonJS: if () { const xx = require(xxx) }
+      // es 新的提案
+    if (true) {
+      import('./b.js')
+    }
+  </script>
+</body>
+</html>
