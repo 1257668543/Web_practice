@@ -1,0 +1,51 @@
+<script>
+  // 斐波那契数列
+  // 1 2 3 4 5 6 7
+  // 0 1 1 2 3 5 8
+  // 递归   10
+  // 数学？
+  // 动态规划
+  // function fib(n) {
+  //   if (n <= 1) return n 
+  //   return fib(n-1) + fib(n-2)
+  // }
+  function fib1(n) {
+    let res = [0n, 1n]
+    for (let i = 2; i < n; i++) {
+      res[i] = res[i - 1] + res[i - 2]
+    }
+    return res[n - 1]
+  }
+  // console.log(fib1(10000));
+
+
+  var value = 'tom';
+  function foo() {
+    eval('var value = 1000')
+    console.log(value)
+  }
+  function bar() {
+    var value = 'bob';
+    foo();
+  }
+  bar();
+
+  // content-type
+  // text/plain ：纯文本格式      
+  // application/x-www-url-encoded ：<form encType=””>中默认的encType，form表单数据被编码为key/value格式发送到服务器（表单默认的提交数据的格式），另外一种常见的媒体格式是上传文件之时使用的：
+  // multipart/formData ：需要在表单中进行文件上传时，就需要使用该格式
+  let arr = [1, [2, [3, [4, [5]]]], 6]
+  // 
+  function flat(a) {
+    let stack = [...a];
+    while(stack.length) {
+      let item = stack.pop();
+      if (Array.isArray(item)) {
+        stack.push(...item); // 2, [3, [4, [5]]]
+      } else {
+        res.unshift(item)
+      }
+    }
+    return res;
+  }
+</script>
