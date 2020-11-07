@@ -9,10 +9,10 @@
  * [{a: 1, b: 2}, {b: 1}, {a: 2, b: 1}] -> [{a: 1, b: 2}, {b: 1},{a: 2, b: 1}]
  * [[1, {a: 1}], [2], [3], [1, {a: 1}]] -> [[1, {a: 1}], [2], [3]]
  */
-// [1, 2, 3] [1, 3, 2]
+  // [1, 2, 3] [1, 3, 2]
 
 
-function type(val) {
+  function type(val) {
     return Object.prototype.toString.call(val).slice(8, -1)
   }
   // 可直接用 Object.is 比较的 比如 string number bool...
@@ -62,11 +62,43 @@ function type(val) {
     }
     return res;
   }
-  console.log(unique([1,'1',1]))                         
-  console.log(unique([{a: 1}, {b: 1}, {a: 1}]))            
-  console.log(unique([{a: 1, b: 2}, {b: 1}, {a: 2, b: 1}]))
-  console.log(unique([[1, {a: 1}], [2], [3], [1, {a: 1}]]))
-  console.log(unique([[1, {a: 1, b: [{c: {d: [9999]}}]}], [2], [3], [1, {a: 1, b: [{c: {d: [9999]}}]}]]))
-  console.log(unique([[1, {a: 1, b: [{c: {d: [9999]}}]}], [2], [3], [1, {a: 1, b: [{c: {d: [8888]}}]}]]))
+  console.log(unique([1, '1', 1]))
+  console.log(unique([{ a: 1 }, { b: 1 }, { a: 1 }]))
+  console.log(unique([{ a: 1, b: 2 }, { b: 1 }, { a: 2, b: 1 }]))
+  console.log(unique([[1, { a: 1 }], [2], [3], [1, { a: 1 }]]))
+  console.log(unique([[1, { a: 1, b: [{ c: { d: [9999] } }] }], [2], [3], [1, { a: 1, b: [{ c: { d: [9999] } }] }]]))
+  console.log(unique([[1, { a: 1, b: [{ c: { d: [9999] } }] }], [2], [3], [1, { a: 1, b: [{ c: { d: [8888] } }] }]]))
 
+
+  // 题目
+  // 写出这段代码的输出结果：
+
+  function createTask(ms) {
+    return () => {
+      console.log('start', ms);
+      return new Promise(r => setTimeout(() => {
+        console.log('end', ms);
+        r(ms);
+      }, ms));
+    }
+  }
+  const tasks = Array(5).fill(null).map((_, i) => createTask(i * 1000));
+  // 0 1000 2000 3000 4000 同时计时
+  Promise.all(tasks.map(task => task())).then(console.log);
+  // 等着 所有的 Promise 完成
+
+  // Promise.resolve(1).then((r) => {
+  //   console.log(r);
+  // })
+  // Promise.resolve(1).then(console.log)
+  // [1, 2, 3].map(parseInt)
+
+  // Promise.all
+  function readFile(fn) {
+    // 
+    fn('hello world')
+  }
+  readFile((r) => {
+    console.log(r); // hello world
+  })
 </script>
