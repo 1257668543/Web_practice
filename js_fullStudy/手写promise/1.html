@@ -1,0 +1,68 @@
+<script>
+  function MyPromise(fn) {
+    let self = this;
+    this.value = undefined;
+    this.reason = undefined;
+    this.status = 'PENDING';
+    function onResolve(value) {
+      // console.log(value);
+      self.status = 'FULFILLED'
+      self.value = value
+      slef.onFulFilled && self.onFulFilled(value)
+      // ||
+    } // 定义 什么时候执行
+    function onReject(reason) { }
+    fn(onResolve, onReject)
+  }
+  MyPromise.prototype.then = function (fn) {
+    if (this.status === 'FULFILLED') fn(this.value)
+    // 
+    else if (this.status === 'PENDING') this.onFulFilled = fn
+  }
+  new MyPromise((resolve, reject) => {
+    setTimeout(() => {
+      resolve(1000)
+    }, 1000) // 改变状态的时候
+  })
+    .then(r => {
+      console.log(r);
+    })
+
+  function readFile(fn) {
+    // 
+    fn('hello world')
+  }
+  readFile((r) => {
+    console.log(r); // hello world
+  })
+  // 移动端
+  // pc
+  // 数据可视化
+  // app (RN ...)
+  // node
+  // 工程化(webpack)
+  // 一精多通
+
+  // nextTick
+  export default {
+    data() {
+      return {
+        a: 123
+      }
+    },
+    mounted() {
+      for (let i = 0; i < 1000; i++) {
+        this.a = i    // 不会渲染1000 次
+      }
+      // 宏任务： setTimeOut setInterval  ... 只要是 宿主环境
+      // 第一次执行 就是宏任务
+      // 宏任务
+      // 宏任务 所有的微任务 宏任务 所有的微任务 宏任务 所有的微任务
+      // Promise.resolve.then(() => render())
+      // 
+      Promise.resolve.then(() => render())
+    }
+  }
+  function render() { }
+  // 微任务(nextTick)里面
+</script>
