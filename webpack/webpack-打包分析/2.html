@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+  <script type="module">
+    setTimeout(() => {
+      // import('./src/index.js')
+      // .then(m => {
+      //   console.log(m);
+      // })
+
+      // 没有es模块化时的动态引入懒加载一段js
+      let scriptNode = document.createElement('script')
+      scriptNode.src = './main.js'
+      document.body.appendChild(scriptNode);
+    }, 3000)
+  </script>
+</body>
+
+</html>
