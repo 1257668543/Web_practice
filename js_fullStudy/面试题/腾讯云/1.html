@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    // [{name, age: 15}, {name, age: 16}]
+    // [15, 16]
+
+    function Animal(name = 'wn', age, p) {
+      this.name = name;
+      this.age = age
+      return p;
+    }
+    // 无参数列表的调用
+    let a = new Animal
+    // 有参数列表的调用
+    let b = new Animal(19)
+
+    function Animal() {}
+    function Cat() {
+      Animal.call(this)
+    }
+    // function create(o) {
+    //   function F() {}
+    //   F.prototype = o;
+    //   return new F();
+    // }
+    function create1(o) {
+      let obj = {}
+      // obj.__proto__ = o;
+      Object.setPrototypeOf(obj, o) // es6
+      return obj;
+    }
+    Cat.prototype = Object.create(Animal.prototype)
+    Cat.prototype.constructor = Cat;
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<script>
+  Function.prototype.a = function () {
+    alert(1);
+  }
+  Object.prototype.b = function () {
+    alert(2);
+  }
+  function A() {
+  }
+  let a = new A();
+  a.a();  // 报错
+  a.b();  // 提示2
+
+  function Animal() {
+    console.log(this.name);
+    this.name = 123
+  }
+  Animal.prototype.name = 456
+  new Animal();
+</script>

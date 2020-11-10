@@ -1,0 +1,35 @@
+<script>
+  function Foo() {
+    // es5 不加修饰符声明变量 就声明为全局的
+    getName = function () {
+      console.log(1)
+    }
+    return this;
+  }
+  Foo.getName = function () {
+    console.log(2)
+  }
+  Foo.prototype.getName = function () {
+    console.log(3)
+  }
+  var getName = function () {
+    console.log(4)
+  }
+  function getName() {
+    console.log(5)
+  }
+  // ouput:
+  Foo.getName(); // 2
+  getName(); // 4
+  Foo().getName(); // 1
+  getName(); // 1
+
+  // 运算符 优先级 new . ()
+  new Foo.getName(); // 2
+  new Foo().getName(); // 3
+  new new Foo().getName(); // 3
+  // new 实例.getName()
+  // new Foo
+  // new Foo()
+  // new new
+</script>

@@ -1,0 +1,21 @@
+<script>
+  // a和b未定义
+  console.log(window.a)
+
+  // 非 promise内部的 同步 错误 catch才能捕获到
+  try {
+    new Promise((resolve) => {
+      window.a.b
+    })
+  } catch (e) {
+    console.log(e)
+  }
+
+  try {
+    setTimeout(() => {
+      console.log(window.a.b)
+    }, 1000)
+  } catch (e) {
+    console.log(e)
+  }
+</script>
