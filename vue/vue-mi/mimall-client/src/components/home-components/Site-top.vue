@@ -6,16 +6,16 @@
           <div class="fl item user">
             <div class="login">
               <a
-                href=""
-                @mouseover="highLight('top', $event)"
-                @mouseleave="fade('top', $event)"
+                href="/login"
+                @mouseenter="hl('top', $event)"
+                @mouseleave="fd('top', $event)"
                 class="log"
                 >登录</a
               >
               <a
-                href=""
-                @mouseover="highLight('top', $event)"
-                @mouseleave="fade('top', $event)"
+                href="/register"
+                @mouseenter="hl('top', $event)"
+                @mouseleave="fd('top', $event)"
                 class="reg"
                 >注册</a
               >
@@ -26,8 +26,8 @@
             <a
               href="https://www.xiaomiyoupin.com/help"
               class="m-safe-anchor"
-              @mouseover="highLight('top', $event)"
-              @mouseleave="fade('top', $event)"
+              @mouseenter="hl('top', $event)"
+              @mouseleave="fd('top', $event)"
               >帮助中心</a
             >
           </div>
@@ -36,21 +36,21 @@
             <a
               href="https://www.xiaomiyoupin.com/download"
               class="download"
-              @mouseover="highLight('top', $event)"
-              @mouseleave="fade('top', $event)"
+              @mouseenter="hl('top', $event)"
+              @mouseleave="fd('top', $event)"
             >
               <img src="@/assets/Header-icon/phone.png" class="p-icon" />
               下载APP
             </a>
           </div>
           <span class="fl line"></span>
-          <div class="fl clauses" @mousemove="showNav" @mouseleave="hideNav">
+          <div class="fl clauses" @mouseenter="showNav" @mouseleave="hideNav">
             <div class="m-clauses">
               <a
                 href="#"
                 class="m-safe"
-                @mouseover="highLight('top', $event)"
-                @mouseleave="fade('top', $event)"
+                @mouseenter="hl('top', $event)"
+                @mouseleave="fd('top', $event)"
                 >资质证照&nbsp;/&nbsp;协议规则</a
               >
               <a-icon type="down" class="icon-down" />
@@ -60,16 +60,16 @@
                 <li>
                   <a
                     href=""
-                    @mousemove="highLight('clauses', $event)"
-                    @mouseleave="fade('clauses', $event)"
+                    @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)"
                     >资质证照</a
                   >
                 </li>
                 <li>
                   <a
                     href=""
-                    @mousemove="highLight('clauses', $event)"
-                    @mouseleave="fade('clauses', $event)"
+                    @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)"
                     >协议规则</a
                   >
                 </li>
@@ -83,6 +83,7 @@
 </template>
 
 <script>
+import { highLight, fade } from '@/pub-func/highlight.js'
 export default {
   data() {
     return {
@@ -91,26 +92,8 @@ export default {
     };
   },
   methods: {
-    highLight(node, e) {
-      switch (node) {
-        case "top":
-          e.currentTarget.style.color = "#fff";
-          break;
-        case "clauses":
-          e.currentTarget.style.backgroundColor = "#845f3f";
-          e.currentTarget.style.color = "#fff";
-      }
-    },
-    fade(node, e) {
-      switch (node) {
-        case "top":
-          e.currentTarget.style.color = "#e7e7e7";
-          break;
-        case "clauses":
-          e.currentTarget.style.backgroundColor = "#fff";
-          e.currentTarget.style.color = "#666666";
-      }
-    },
+    hl: highLight,
+    fd: fade,
     showNav() {
       this.clausesNav = true;
     },

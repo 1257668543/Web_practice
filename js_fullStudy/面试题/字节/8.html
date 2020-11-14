@@ -32,4 +32,25 @@
   // new Foo
   // new Foo()
   // new new
+
+  // 作用域：词法（静态）作用域 动态作用域
+  // js作用域：词法（静态）作用域
+
+  // var name = '123'
+  // function foo() {
+  //   console.log(name); // 123 词法作用域：取决于定义时所作的位置
+  // }
+  // function bar() {
+  //   var name = '456'
+  //   foo()
+  // }
+  // bar()
+  function t() {
+    let n = 123
+    return function() {
+      return n++
+    }
+  }
+  let a = t();
+  a()
 </script>

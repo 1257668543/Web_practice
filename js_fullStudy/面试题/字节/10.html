@@ -2,10 +2,16 @@
   const timeout = ms => new Promise((resolve, reject) => {
     setTimeout(() => resolve(), ms);
   });
-
+  // let ppp = Promise.resolve(1).then(() => {
+  //   return 2
+  // })
+  // promise.then 返回了一个 promise 所以 .then 可以链式调用
+  // let a = ajax1()
+  // a.then((r) => {})
   const ajax1 = () => timeout(2000).then(() => {
     console.log('1');
     return 1;
+    // return 的不是 promise
   });
 
   const ajax2 = () => timeout(1000).then(() => {
@@ -19,7 +25,24 @@
   });
 
   const mergePromise = (ajaxArray) => {
-    
+    return new Promise((resolve, reject) => {
+      let i = 0, count = 0, len = ajaxArray.length;
+      let res = [];
+      function requestWork() {
+        let index = i;
+        let work = ajaxArray[i];
+        if (!work) {
+          resolve(res)
+          return
+        }
+        work().then(r => {
+          i++;
+          res[index] = r
+          requestWork();
+        })
+      }
+      requestWork()
+    })
   };
 
   mergePromise([ajax1, ajax2, ajax3])

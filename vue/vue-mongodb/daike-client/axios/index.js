@@ -1,5 +1,5 @@
 import apiLogin from './interface/login';
-import apiRegister from './interface/register'
+import apiRegister from './interface/register';
 
 const install = Vue => {
   if (install.installed) {

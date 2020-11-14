@@ -5,7 +5,7 @@ const router = require('koa-router')();
 // koa 中间件
 app.use(async (ctx, next) => {
   // 允许哪个域名请求 *
-  ctx.set('Access-Control-Allow-Origin', 'http://localhost:51267');
+  ctx.set('Access-Control-Allow-Origin', '*');
   // 服务器支持的头部 x-custom
   ctx.set('Access-Control-Allow-Headers', 'x-custom,content-type');
   // 支持的方法
