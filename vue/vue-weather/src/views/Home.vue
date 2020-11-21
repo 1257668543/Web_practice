@@ -65,6 +65,7 @@ export default {
         citySearch.getLocalCity(function (status, result) {
           if (status === "complete" && result.info === "OK") {
             // 获取位置成功
+            console.log(result);
             _self.getCurrentCityData(result.city);
           }
         });
