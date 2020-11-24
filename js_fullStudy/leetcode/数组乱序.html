@@ -1,0 +1,58 @@
+<script>
+  // // 链表反转
+  // [1, 2, 3, 4, 5]
+  // let node1 = {val: 1}
+  // let node2 = {val: 2}
+  // let node3 = {val: 3}
+  // let node4 = {val: 4}
+  // node1.next = node2
+  // node2.next = node3
+  // node3.next = node4
+  // node4.next = null
+  // // console.log(node1);
+  // let current = node1;
+  // // while(current) {
+  // //   console.log(current.val);
+  // //   current = current.next
+  // // }
+
+  // function reverseLinkList(head) {
+  //   let pre = null;
+  //   let current = head;
+  //   while(current) {
+  //     let next = current.next
+  //     // 本次交换
+  //     current.next = pre
+  //     // 这个节点交换完之后 走到下一个
+  //     pre = current
+  //     current = next
+  //   }
+  //   // current = null 退出
+  //   return pre
+  // }
+  // // console.log(reverseLinkList(node1)); 
+
+
+
+
+
+
+
+  let arr = [1, 2, 3, 4, 5];
+  // [1, 2, 3, 4, 5] 每个数出现在每位概率是相等的
+
+
+  // 0 ~ len 随机取出来
+  // 洗牌算法
+  // 抽奖
+  function shuffle(arr) {
+    for (let i = arr.length - 1; i >= 0; i ++) {
+      // 0 - i 随机取一个索引 和 arr[i] 交换
+      // [0, 1] [0, 9]
+      let index = Math.floor(Math.random() * i + 1)
+      [arr[i], arr[index]] = [arr[index], arr[i]] 
+    }
+    return arr;
+  }
+  console.log(shuffle(arr)); 
+</script>
