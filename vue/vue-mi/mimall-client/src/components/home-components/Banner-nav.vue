@@ -92,13 +92,13 @@ export default {
   data() {
     return {
       images: [
-        "https://img.youpin.mi-img.com/test/672efc47aa402e00bd4c7990674f9b09.png?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/ed7653a9c05c10610d8c523d4eed745e.jpeg?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/3c954b2114fb7b60efc3c443baad5143.jpeg?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/0731bc38e5ba99ff3a1358e664a3e1df.jpeg?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/59bced7cc064d20708204dd023b58eb1.jpeg?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/82f151d99c9bd082a649ae448c53d30e.jpeg?w=1080&h=450",
-        "https://img.youpin.mi-img.com/test/74bfe9eb614a8ebebc08b09a529c53ce.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/ffc9abe427272b491c67fb85393ca935.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/2da7d3e434f2f6c1b81c319376470a11.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/dbcf460413f27c8dc99cdb3c2e3ae1f5.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/f47e62e34f565e28592f3c3d4f6377c9.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/a7ca9f43531736a9ebf6b1cc20b2c4cf.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/9f81b04551f3fed7ef258ba161c79cb9.jpeg?w=1080&h=450",
+        "https://img.youpin.mi-img.com/test/bdf6dc980371978a18bd5d5339dac51d.jpeg?w=1080&h=450",
       ],
       someList: [
         {
