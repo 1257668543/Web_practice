@@ -17,5 +17,5 @@ api.juejin.cn/delete/01 验证用户身份（后端无法拿到 cookie）
 
 cookie不能跨域：最新chrome提出的 sameSite 为 strict
 
-1. sameSite 设为 strict、lax
+1. sameSite 设为 strict、lax  参见：http://www.ruanyifeng.com/blog/2019/09/cookie-samesite.html
 2. 用户登录成功时候给他一个 token，之后前端每个请求都带上这个 token，黑客网站是拿不到 token，它的请求没 token 就拒绝它
