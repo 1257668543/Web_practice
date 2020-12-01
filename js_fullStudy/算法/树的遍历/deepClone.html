@@ -1,0 +1,13 @@
+<script>
+  function deepClone(obj) {
+    let res = {}
+    Object.keys(obj).forEach(k => {
+      if (typeof obj[k] === 'object' && obj[k] !== null)  {
+        res[k] = deepClone(obj[k])
+      } else {
+        res[k] = obj[k]
+      }
+    })
+    return res;
+  }
+</script>

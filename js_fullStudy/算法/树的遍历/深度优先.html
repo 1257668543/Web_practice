@@ -1,0 +1,40 @@
+<script>
+  const obj = {
+    label: "c",
+    value: 3,
+    children: [
+      { label: "a", value: 1 },
+      {
+        label: "b", value: 2,
+        children: [
+          {
+            label: 'd', value: -1
+          }
+        ]
+      },
+    ],
+  };
+
+  let data = [
+    { label: 'a', value: 1, parentValue: 3 },
+    { label: 'b', value: 2, parentValue: 3 },
+    { label: 'c', value: 3 },
+  ] 
+  function convert(tree) {
+    let res = [];
+    function walk(node, parentNode) {
+      let t = { label: node.label, value: node.value }
+      if (parentNode) t.parentValue = parentNode.value
+      if (node.children) {
+        for (let child of node.children) {
+          walk(child, node)
+        }
+      }
+      res.push(t)
+    }
+    walk(tree)
+    return res;
+  }
+  let arr = convert(obj)
+  console.log(arr);
+</script>
