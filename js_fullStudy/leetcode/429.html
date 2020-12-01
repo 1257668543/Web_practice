@@ -1,0 +1,20 @@
+<script>
+  var levelOrder = function(root) {
+    let queue = [root], res = [];
+    if (!root) return res;
+    while(queue.length) {
+      let row = queue.splice(0)    // 当前节点取出来
+      let rowValue = []
+      for (let node of row) {
+        rowValue.push(node.val)
+        if (node.children) {
+          for (let child of node.children) {
+            queue.push(child)    // 下层节点
+          }
+        }
+      }
+      res.push(rowValue)
+    }
+    return res;
+  };
+</script>
