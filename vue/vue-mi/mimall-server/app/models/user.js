@@ -3,12 +3,12 @@ const mongoose = require('mongoose')
 const Schema = mongoose.Schema
 
 const UserSchema = new Schema({
-  user_id: {
+  user_account: {
     type: String,
     unique: true,
     require: true
   },
-  user_name: {
+  user_nickname: {
     type: String
   },
   user_pwd: {
