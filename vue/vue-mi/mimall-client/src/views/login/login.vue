@@ -7,11 +7,15 @@
             <div id="main-content">
               <div class="main-box">
                 <div class="ercode">
-                  <a-icon type="qrcode" class="ercode-icon"/>
+                  <a-icon type="qrcode" class="ercode-icon" />
                 </div>
                 <div class="login-header">
                   <div class="header_tit">
-                    <img src="https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png" alt="loading..." class="milogo">
+                    <img
+                      src="https://account.xiaomi.com/static/res/349d9c1/account-static/respassport/acc-2014/img/milogo.png"
+                      alt="loading..."
+                      class="milogo"
+                    />
                     <h4 class="login-title">小米帐号登录</h4>
                     <div class="site-info"></div>
                   </div>
@@ -19,12 +23,68 @@
                 <div class="login-area">
                   <div class="loginbox">
                     <div class="lgn-input">
-                      <a-input placeholder="邮箱/手机号码/小米ID" allow-clear class="account-input"/>
-                      <a-input-password placeholder="密码" class="pwd-input"/>
+                      <a-input
+                        size="large"
+                        :placeholder="
+                          isRegister
+                            ? '请输入6-16位，数字/字母/下划线组成的账号'
+                            : '邮箱/手机号码/小米ID'
+                        "
+                        allow-clear
+                        class="account-input"
+                        v-model="account"
+                      />
+                      <a-input
+                        size="large"
+                        placeholder="昵称"
+                        allow-clear
+                        class="account-input"
+                        v-if="isRegister"
+                        v-model="nickname"
+                      />
+                      <a-input-password
+                        size="large"
+                        placeholder="密码"
+                        class="pwd-input"
+                        v-model="pwd"
+                      />
+                      <a-input-password
+                        size="large"
+                        placeholder="确认密码"
+                        class="pwd-input"
+                        v-if="isRegister"
+                        v-model="confirm_pwd"
+                      />
                     </div>
                     <div class="btn-lgn">
-                      <input type="button" id="login-btn" value="登录">
-                      <input type="button" id="regist-btn" value="立即注册" @click="toRegist">
+                      <input
+                        type="button"
+                        id="login-btn"
+                        value="已有账号，去登录"
+                        v-if="isRegister"
+                        @click="showLogin"
+                      />
+                      <input
+                        type="button"
+                        id="login-btn"
+                        value="登录"
+                        v-else
+                        @click="login"
+                      />
+                      <input
+                        type="button"
+                        id="regist-btn"
+                        value="确认注册"
+                        v-if="isRegister"
+                        @click="register"
+                      />
+                      <input
+                        type="button"
+                        id="regist-btn"
+                        value="立即注册"
+                        v-else
+                        @click="showRegister"
+                      />
                     </div>
                   </div>
                 </div>
@@ -41,33 +101,79 @@
 export default {
   data() {
     return {
-      account: '',
-      pwd: ''
-    }
+      account: "",
+      nickname: '',
+      pwd: "",
+      confirm_pwd: "",
+      isRegister: false,
+      log_btn: "",
+      reg_btn: "",
+    };
+  },
+  beforeMount() {
+    this.isRegister = this.$route.query.isRegister ? true : false;
   },
   mounted() {
-    this.$message.info('欢迎来到登录页');
+    this.$message.info(this.isRegister ? "欢迎来到注册页" : "欢迎来到登录页");
   },
   methods: {
-    add() {
-      this.account += '1'
-      this.pwd += '1'
+    showLogin() {
+      this.account = this.pwd = this.nickname = this.confirm_pwd = ''
+      this.isRegister = false;
     },
-    handleTest() {
-      console.log(this);
-      this.$http.login({ 
-        user_id: this.account,
-        pwd: this.pwd
-      }).then(res => {
-        console.log(res.data);
-      }).catch(err => {
-        console.log(err);
-      })
+    showRegister() {
+      this.isRegister = true;
     },
-    toRegist() {
-      
-    }
-  }
+    // 请求登录接口，验证账号和密码
+    login() {
+      if (!this.account || !this.pwd) {
+        this.$message.info('请输入账号和密码！')
+        return
+      }
+      this.$http
+        .login({
+          user_account: this.account,
+          user_pwd: this.pwd,
+        })
+        .then((res) => {
+          this.$message.success('登录成功！')
+          console.log(res.data);
+        })
+        .catch((err) => {
+          this.$message.error(err)
+        });
+    },
+    // 请求注册接口，验证账号重复性
+    register() {
+      let reg = /^[\w]{6,16}$/
+      if (!reg.test(this.account)) {
+        this.$message.warning("账号不规范，请输入6-16位，数字，字母，下划线组成的账号!");
+        return
+      } 
+      else if (!this.pwd || !this.confirm_pwd || !this.nickname) {
+        this.$message.warning("请输入密码与昵称！");
+        return;
+      }
+      else if (this.pwd !== this.confirm_pwd) {
+        this.$message.warning("两次输入密码不一致，请重试！");
+        return;
+      }
+      this.$http
+        .register({
+          user_account: this.account,
+          user_nickname: this.nickname,
+          user_pwd: this.pwd
+        })
+        .then((res) => {
+          this.$message.success('注册成功！')
+          console.log(res.data);
+        })
+        .catch((err) => {
+          this.$message.error('注册失败！')
+          console.log(err);
+        });
+    },
+  },
 };
 </script>
 
@@ -98,7 +204,8 @@ export default {
   padding-bottom: 105px;
   padding-top: 50px;
 }
-.wrap, .layout_panel {
+.wrap,
+.layout_panel {
   width: 100%;
 }
 .layout {
@@ -126,19 +233,19 @@ export default {
   padding: 25px 0 0;
   text-align: center;
 }
-.milogo{
+.milogo {
   width: 49px;
   height: 48px;
   margin: 0 auto;
   display: block;
 }
-.login-title{
+.login-title {
   font-size: 22px;
   padding-top: 15px;
   color: #333;
   font-weight: normal;
 }
-.site-info{
+.site-info {
   padding-top: 10px;
 }
 .login-area {

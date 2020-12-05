@@ -6,14 +6,14 @@
           <div class="fl item user">
             <div class="login">
               <a
-                href="/login"
+                href="/login?isRegister"
                 @mouseenter="hl('top', $event)"
                 @mouseleave="fd('top', $event)"
                 class="log"
                 >登录</a
               >
               <a
-                href="/register"
+                href="/login?isRegister=true"
                 @mouseenter="hl('top', $event)"
                 @mouseleave="fd('top', $event)"
                 class="reg"

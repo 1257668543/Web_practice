@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/views/home/index'
 import Login from '@/views/login/login.vue'
 import Register from '@/views/login/register.vue'
+import Error from '../components/Error-component/Error.vue'
 
 Vue.use(VueRouter)
 
@@ -21,8 +22,11 @@ const routes = [
     path: '/register',
     name: 'register',
     component: Register
-  }
-
+  },
+  {
+    path:'*',
+    component:Error
+ }
 ]
 
 const router = new VueRouter({

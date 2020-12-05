@@ -17,6 +17,8 @@ time, mark, audio, video, input {
   font-weight: normal;
   box-sizing: content-box;
   color: #333;
+  margin-bottom: 0;
+  margin-top: 0;
 }
 
 input{
