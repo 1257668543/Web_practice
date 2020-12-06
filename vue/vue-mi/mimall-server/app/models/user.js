@@ -5,7 +5,6 @@ const Schema = mongoose.Schema
 const UserSchema = new Schema({
   user_account: {
     type: String,
-    unique: true,
     require: true
   },
   user_nickname: {

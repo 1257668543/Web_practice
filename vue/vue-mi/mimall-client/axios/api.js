@@ -3,8 +3,6 @@ import config from './config.js'
 import qs from 'qs' // 序列化请求数据，服务端要求
 import router from 'vue-router'
 
-import { Toast } from 'vant'
-
 export default function $axios(options) {
   return new Promise((resolve, reject) => {
     const instance = axios.create({
@@ -24,7 +22,6 @@ export default function $axios(options) {
         // 1. 判断请求超时
         if (error.code === 'ECONNABORTED' && error.message.indexOf('timeout' !== -1)) {
           console.log('请求超时');
-          Toast.fail('请求超时')
         }
         // 2. 需要重定向到错误页面
         const errorInfo = error.response
@@ -52,10 +49,6 @@ export default function $axios(options) {
         const message = data.msg || 'Error';
         switch (data.code) {
           case 0:
-            Toast.fail({
-              message,
-              duration: 1000
-            })
             return Promise.reject(message)
           default:
         }

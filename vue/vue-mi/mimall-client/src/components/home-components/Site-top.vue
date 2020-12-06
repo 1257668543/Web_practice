@@ -4,7 +4,47 @@
       <div class="container">
         <div class="fr">
           <div class="fl item user">
-            <div class="login">
+            <div class="login" v-if="isLogin" @mouseenter="show_itemNav" @mouseleave="hide_itemNav">
+              <a href="" class="user_order">
+                <a-icon
+                  type="smile"
+                  theme="twoTone"
+                  two-tone-color="#eecd80"
+                  class="user-icon"
+                />
+                <span class="user_nickname">{{ user_nickname }}</span>
+                <a-icon type="down" class="icon-down-arrow"/>
+              </a>
+              <div href="" class="item-nav" :class="itemNav ? 'showed' : 'hidden'">
+                <ul class="user-nav">
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)">我的订单</a>
+                  </li>
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)">退款/售后</a>
+                  </li>
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)">我的资产</a>
+                  </li>
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)">我的收藏</a>
+                  </li>
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)">地址管理</a>
+                  </li>
+                  <li>
+                    <a href="" class="item" @mouseenter="hl('clauses', $event)"
+                    @mouseleave="fd('clauses', $event)" @click="signOut">退出登录</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+            <div class="login" v-else>
               <a
                 href="/login?isRegister"
                 @mouseenter="hl('top', $event)"
@@ -83,10 +123,21 @@
 </template>
 
 <script>
-import { highLight, fade } from '@/pub-func/highlight.js'
+import { highLight, fade } from "@/pub-func/highlight.js";
 export default {
+  props: {
+    isLogin: {
+      type: Boolean,
+      default: false,
+    },
+    user_nickname: {
+      type: String,
+      default: "",
+    },
+  },
   data() {
     return {
+      itemNav: false,
       clausesNav: false,
       topHighLight: false,
     };
@@ -100,6 +151,16 @@ export default {
     hideNav() {
       this.clausesNav = false;
     },
+    show_itemNav() {
+      this.itemNav = true
+    },
+    hide_itemNav() {
+      this.itemNav = false
+    },
+    signOut() {
+      sessionStorage.removeItem('user_account')
+      sessionStorage.removeItem('user_nickname')
+    }
   },
 };
 </script>
@@ -215,7 +276,6 @@ export default {
     a {
       display: block;
       font-size: 14px;
-      color: #666666;
     }
   }
 }
@@ -226,5 +286,71 @@ export default {
   a {
     margin-left: 8px;
   }
+  .item-nav{
+    width: 100px;
+    left: 15px;
+    position: absolute;
+    top: 48px;
+    overflow: hidden;
+    -webkit-box-shadow: 0 3px 28px rgba(0,0,0,.1);
+    box-shadow: 0 3px 28px rgba(0,0,0,.1);
+    -webkit-transition: all .3s cubic-bezier(0,1,.5,1);
+    -o-transition: all .3s cubic-bezier(0,1,.5,1);
+    transition: all .3s cubic-bezier(0,1,.5,1);
+    background: #fff;
+    .user-nav {
+      background: #fff;
+      li {
+        height: 35px;
+        line-height: 35px;
+        .item {
+          display: block;
+          font-size: 14px;
+          margin-left: 0;
+          color: #666;
+        }
+      }
+    }
+  }
+  .showed {
+    opacity: 1;
+    height: 210px;
+  }
+  .hidden {
+    height: 0;
+    opacity: 0;
+  }
+}
+.user_order {
+  display: block;
+    width: 70px;
+    padding-left: 30px;
+    padding-right: 20px;
+    overflow: hidden;
+    position: relative;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    height: 48px;
+    line-height: 48px;
+}
+.user-icon {
+  position: absolute;
+  top: 10px;
+  left: 6px;
+  font-size: 28px;
+}
+.user_nickname{
+  color: #e7e7e7;
+  white-space: nowrap;
+  font-size: 17px;
+}
+.icon-down-arrow {
+  color:#b6b6b6;
+  position: absolute;
+  width: 28px;
+  height: 28px;
+  top: 18px;
+  right: 0;
 }
 </style>

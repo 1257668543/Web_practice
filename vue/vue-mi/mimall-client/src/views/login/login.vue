@@ -136,8 +136,13 @@ export default {
           user_pwd: this.pwd,
         })
         .then((res) => {
-          this.$message.success('登录成功！')
-          console.log(res.data);
+          this.$message.success(res.msg + ',即将跳转首页...')
+          console.log(res.data.user_account);
+          sessionStorage.setItem('user_account', res.data.user_account)
+          sessionStorage.setItem('user_nickname', res.data.user_nickname)
+          setTimeout(() => {
+            this.$router.push('/')
+          }, 3000)
         })
         .catch((err) => {
           this.$message.error(err)
@@ -166,7 +171,8 @@ export default {
         })
         .then((res) => {
           this.$message.success('注册成功！')
-          console.log(res.data);
+          console.log(res)
+          this.isRegister = false
         })
         .catch((err) => {
           this.$message.error('注册失败！')

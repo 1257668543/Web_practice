@@ -7,7 +7,7 @@ const bodyParser = require('koa-bodyparser');
 
 // 建立数据库连接
 mongoose.set('useCreateIndex', true)
-mongoose.connect('mongodb://localhost:27017/test');
+mongoose.connect(config.db);
 const con = mongoose.connection;
 con.on('error', console.error.bind(console, '连接数据库失败'));
 con.once('open',()=>{

@@ -3,8 +3,6 @@ const User_col = require('../models/user')  // 引入模型层（schema）
 // 登录
 const login = async (ctx, next) => {
   const req = ctx.request.body
-  console.log(req.user_account);
-  // console.log(req);
   // 获取用户userId
   const user = await User_col.findOne({
     user_account: req.user_account
