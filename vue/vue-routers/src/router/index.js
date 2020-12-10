@@ -3,7 +3,7 @@ import Vue from 'vue'
 import router from 'vue-router'
 import Hello from '../components/HelloWorld'
 import Hi from '../components/Hi'
-// import Hi1 from '../components/Hi1'
+import Hi1 from '../components/Hi1'
 import Hi2 from '../components/Hi2'
 import Error from '@/components/Error'
 
@@ -28,8 +28,8 @@ export default new router({
             {
               path: 'hi1', 
               name: 'hi1', 
-              // component: Hi1,
-              redirect: '/' // 路由重定向 
+              component: Hi1,
+              // redirect: '/' // 路由重定向 
             },//子路由的<router-view>必须在HelloWorld.vue中出现
             {
               path: 'hi2', 

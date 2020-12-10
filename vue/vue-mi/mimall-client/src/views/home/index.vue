@@ -4,35 +4,14 @@
     <siteTop :isLogin="isLogin" :user_nickname="user_nickname"/>
     <Header />
     <FixedBar />
-    <Banner_nav />
-    <Classify_section />
-    <div class="test">
-      <img
-        src="https://img.youpin.mi-img.com/test/1cbb0d8114d1e13651bdee3fdfc29151.jpeg?w=1080&h=450"
-        alt=""
-      />
-    </div>
-    <div class="test">
-      <img
-        src="https://img.youpin.mi-img.com/test/1cbb0d8114d1e13651bdee3fdfc29151.jpeg?w=1080&h=450"
-        alt=""
-      />
-    </div>
-    <div class="test">
-      <img
-        src="https://img.youpin.mi-img.com/test/1cbb0d8114d1e13651bdee3fdfc29151.jpeg?w=1080&h=450"
-        alt=""
-      />
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import siteTop from "@/components/home-components/Site-top.vue";
-import Header from "@/components/home-components/Header.vue";
-import FixedBar from "@/components/home-components/FixedBar.vue";
-import Banner_nav from '@/components/home-components/Banner-nav.vue'
-import Classify_section from '@/components/home-components/Classify-section.vue'
+import siteTop from "@/components/basic-components/Site-top.vue";
+import Header from "@/components/basic-components/Header.vue";
+import FixedBar from "@/components/basic-components/FixedBar.vue";
 export default {
   data() {
     return {
@@ -43,9 +22,7 @@ export default {
   components: {
     siteTop,
     Header,
-    FixedBar,
-    Banner_nav,
-    Classify_section
+    FixedBar
   },
 };
 </script>

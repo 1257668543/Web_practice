@@ -1,4 +1,5 @@
 const User_col = require('../models/user')  // 引入模型层（schema）
+const uuidv1 = require('uuid').v1
 
 // 登录
 const login = async (ctx, next) => {
@@ -48,7 +49,9 @@ const register = async (ctx, next) => {
     return
   }
   // 插入用户
+  const userId = uuidv1()
   const newUser = await User_col.create({
+    user_id: userId,
     user_account: req.user_account,
     user_nickname: req.user_nickname,
     user_pwd: req.user_pwd
@@ -59,7 +62,8 @@ const register = async (ctx, next) => {
       msg: '注册成功',
       data: {
         account: newUser.user_account,
-        nickname: newUser.user_nickname
+        nickname: newUser.user_nickname,
+        userId: newUser.user_id
       }
     }
   } else {

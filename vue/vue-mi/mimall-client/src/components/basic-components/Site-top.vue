@@ -46,14 +46,14 @@
             </div>
             <div class="login" v-else>
               <a
-                href="/login?isRegister"
+                href="/?isRegister"
                 @mouseenter="hl('top', $event)"
                 @mouseleave="fd('top', $event)"
                 class="log"
                 >登录</a
               >
               <a
-                href="/login?isRegister=true"
+                href="/?isRegister=true"
                 @mouseenter="hl('top', $event)"
                 @mouseleave="fd('top', $event)"
                 class="reg"
@@ -276,6 +276,7 @@ export default {
     a {
       display: block;
       font-size: 14px;
+      color: #666;
     }
   }
 }

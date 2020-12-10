@@ -137,11 +137,11 @@ export default {
         })
         .then((res) => {
           this.$message.success(res.msg + ',即将跳转首页...')
-          console.log(res.data.user_account);
           sessionStorage.setItem('user_account', res.data.user_account)
+          sessionStorage.setItem('user_id', res.data.user_id)
           sessionStorage.setItem('user_nickname', res.data.user_nickname)
           setTimeout(() => {
-            this.$router.push('/')
+            this.$router.push('/Home/homePage')
           }, 3000)
         })
         .catch((err) => {
@@ -169,9 +169,8 @@ export default {
           user_nickname: this.nickname,
           user_pwd: this.pwd
         })
-        .then((res) => {
+        .then(() => {
           this.$message.success('注册成功！')
-          console.log(res)
           this.isRegister = false
         })
         .catch((err) => {

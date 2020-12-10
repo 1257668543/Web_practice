@@ -12,7 +12,7 @@ export default {
     };
   },
   mounted() {
-    this.$message.info("地址输错咯，点击 回首页 / 浏览器的返回 看看吧");
+    this.$message.info("地址输错咯，点击 回首页 返回首页");
   },
   methods: {
     toHome() {
