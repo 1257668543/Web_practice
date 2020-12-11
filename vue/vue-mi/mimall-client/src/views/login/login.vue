@@ -86,6 +86,14 @@
                         @click="showRegister"
                       />
                     </div>
+                    <div class="linkToHome">
+                      <div>
+                        <a href="./Home/homePage" id="home-link">先逛逛</a>
+                      </div>
+                      <div>
+                        <a href="./admin" id="manage-link">管理员登录</a>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -292,5 +300,17 @@ export default {
   font-size: 14px;
   color: #ff6700;
   cursor: pointer;
+}
+.linkToHome {
+  padding-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+#home-link {
+  color: #ff6700;
+}
+#manage-link {
+  color: #8f8c8c;
 }
 </style>

@@ -4,6 +4,7 @@ import Home from '@/views/home/index'
 import homePage from '@/components/wrapper/Home-wrapper.vue'
 import Login from '@/views/login/login.vue'
 import Error from '../components/Error-component/Error.vue'
+import Manage from '@/views/manage/manage.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ const routes = [
     path: '/',
     name: 'login',
     component: Login
+  },
+  {
+    path: '/admin',
+    name: 'manage',
+    component: Manage
   },
   {
     path:'*',

@@ -1,4 +1,4 @@
-const User_col = require('../models/user')  // 引入模型层（schema）
+const User_col = require('../models/user')  // 引入用户模型层（schema）
 const uuidv1 = require('uuid').v1
 
 // 登录
@@ -73,7 +73,6 @@ const register = async (ctx, next) => {
     }
   }
 }
-
 
 module.exports = {
   login,
