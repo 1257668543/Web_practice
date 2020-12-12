@@ -19,6 +19,9 @@ const GoodsSchema = new Schema({
   goods_desc: {
     type: String
   },
+  goods_showPic: {
+    type: String
+  },
   goods_picArr: {
     type: Array
   },

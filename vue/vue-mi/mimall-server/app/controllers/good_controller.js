@@ -11,6 +11,7 @@ const insert = async (ctx, next) => {
     goods_price: req.G_price,
     goods_id: G_id,
     goods_desc: req.G_desc,
+    goods_showPic: req.G_showPic,
     goods_picArr: req.G_picArr,
     goods_categories: req.G_categories
   })
@@ -23,6 +24,7 @@ const insert = async (ctx, next) => {
         price: newGood.goods_price,
         desc: newGood.goods_desc,
         id: newGood.goods_id,
+        showPic: newGood.goods_showPic,
         picArr: newGood.goods_picArr,
         categories: newGood.goods_categories
       }
@@ -35,6 +37,30 @@ const insert = async (ctx, next) => {
   }
 }
 
+const getAll = async (ctx, next) => {
+  let data = [], errmsg = null
+  await Goods_col.find({}, (err, doc) => {
+    if (err) {
+      errmsg = err
+      return
+    }
+    data = doc 
+  })
+  if (errmsg) {
+    ctx.body = {
+      code: 0,
+      msg: '查询失败'
+    }
+    return
+  }
+  ctx.body = {
+    code: 1,
+    msg: '查询成功',
+    data: JSON.stringify(data)
+  }
+}
+
 module.exports = {
-  insert
+  insert,
+  getAll
 }

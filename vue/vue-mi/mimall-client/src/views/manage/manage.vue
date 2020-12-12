@@ -59,16 +59,19 @@
             <a-select-option value="20">DLAB</a-select-option>            
           </a-select>
         </a-form-model-item>
-        <a-form-model-item label="商品图片地址">
+        <a-form-model-item label="展示页图片地址">
+          <a-input v-model="form.G_showPic" />
+        </a-form-model-item>
+        <a-form-model-item label="详情页图片地址">
           <a-input v-model="form.G_picArr[0]" />
         </a-form-model-item>
-        <a-form-model-item label="商品图片地址">
+        <a-form-model-item label="详情页图片地址">
           <a-input v-model="form.G_picArr[1]" />
         </a-form-model-item>
-        <a-form-model-item label="商品图片地址">
+        <a-form-model-item label="详情页图片地址">
           <a-input v-model="form.G_picArr[2]" />
         </a-form-model-item>
-        <a-form-model-item label="商品图片地址">
+        <a-form-model-item label="详情页图片地址">
           <a-input v-model="form.G_picArr[3]" />
         </a-form-model-item>
         <a-form-model-item label="商品描述">
@@ -95,6 +98,7 @@ export default {
         G_name: "",
         G_price: "",
         G_desc: "",
+        G_showPic: "",
         G_picArr: [],
         G_categories: ""
       }
@@ -135,6 +139,7 @@ export default {
       this.form.G_price = ''
       this.form.G_desc = ''
       this.form.G_categories = ''
+      this.form.G_showPic = ''
       this.form.G_picArr = []
     },
   },

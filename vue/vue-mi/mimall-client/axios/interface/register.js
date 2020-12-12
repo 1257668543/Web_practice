@@ -2,7 +2,7 @@ import axios from '../api'
 
 const register = data => {
   return axios({
-    url: '/register',
+    url: '/user/register',
     method: 'post',
     data
   })

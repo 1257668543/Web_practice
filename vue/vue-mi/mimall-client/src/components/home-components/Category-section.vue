@@ -11,25 +11,25 @@
         <div
           class="goods-item-container item-category"
           :class="index%4 === 0?'first':''"
-          v-for="(item, index) in category_list"
-          :key="index"
+          v-for="(item, index) in goods_list"
+          :key="item.goods_id"
         >
           <div class="category-img-container">
             <div class="product-img">
               <div class="product-image-container">
                 <div class="img-container">
-                  <img v-lazy="item.url" />
+                  <img v-lazy="item.goods_showPic" />
                 </div>
               </div>
             </div>
-            <p class="desc">{{item.desc}}</p>
+            <p class="desc">{{item.goods_desc}}</p>
           </div>
           <div class="category-box">
             <div class="goods-common-tag"></div>
-            <p class="info" :title="item.title">{{item.title}}</p>
+            <p class="info" :title="item.goods_name">{{item.goods_name}}</p>
             <p class="price">
               <span class="unit">¥</span>
-              <span class="num">{{item.price}}</span>
+              <span class="num">{{item.goods_price}}</span>
             </p>
           </div>
         </div>
@@ -42,40 +42,18 @@
 export default {
   data() {
     return {
-      category_list: [
-        {
-          url: "https://img.youpin.mi-img.com/shopmain/dfce9da45c02dacf6b4e2d1beca53631.png@base@tag=imgScale&F=webp&h=800&w=800?w=800&h=800",
-          desc: "4K HDR视频，8公里图传，35分钟飞行时长",
-          title: "飞米 FIMI X8SE 2020 无人机",
-          price: 99
-        },
-        {
-          url: "https://img.youpin.mi-img.com/shopmain/dfce9da45c02dacf6b4e2d1beca53631.png@base@tag=imgScale&F=webp&h=800&w=800?w=800&h=800",
-          desc: "4K HDR视频，8公里图传，35分钟飞行时长",
-          title: "飞米 FIMI X8SE 2020 无人机",
-          price: 99
-        },
-        {
-          url: "https://img.youpin.mi-img.com/shopmain/dfce9da45c02dacf6b4e2d1beca53631.png@base@tag=imgScale&F=webp&h=800&w=800?w=800&h=800",
-          desc: "4K HDR视频，8公里图传，35分钟飞行时长",
-          title: "飞米 FIMI X8SE 2020 无人机",
-          price: 99
-        },
-        {
-          url: "https://img.youpin.mi-img.com/shopmain/dfce9da45c02dacf6b4e2d1beca53631.png@base@tag=imgScale&F=webp&h=800&w=800?w=800&h=800",
-          desc: "4K HDR视频，8公里图传，35分钟飞行时长",
-          title: "飞米 FIMI X8SE 2020 无人机",
-          price: 99
-        },
-        {
-          url: "https://img.youpin.mi-img.com/shopmain/dfce9da45c02dacf6b4e2d1beca53631.png@base@tag=imgScale&F=webp&h=800&w=800?w=800&h=800",
-          desc: "4K HDR视频，8公里图传，35分钟飞行时长",
-          title: "飞米 FIMI X8SE 2020 无人机",
-          price: 99
-        }
-      ],
+      goods_list: []
     };
   },
+  created() {
+    this.$http.getAll()
+      .then((res) => {
+        this.goods_list = JSON.parse(res.data)
+      })
+      .catch((err) => {
+        console.log(err);
+      })
+  }
 };
 </script>
 

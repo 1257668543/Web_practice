@@ -1,6 +1,7 @@
 import apiLogin from './interface/login';
 import apiRegister from './interface/register';
 import apiInsert from './interface/insert_goods'
+import apiGetAll from './interface/get_Allgoods'
 
 const install = Vue => {
   if (install.installed) {
@@ -15,7 +16,8 @@ const install = Vue => {
           {},
           apiLogin,
           apiRegister,
-          apiInsert
+          apiInsert,
+          apiGetAll
         )
       }
     }
