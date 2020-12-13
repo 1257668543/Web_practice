@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/home/index'
 import homePage from '@/components/wrapper/Home-wrapper.vue'
+import searchPage from '@/components/wrapper/Search-wrapper.vue'
 import Login from '@/views/login/login.vue'
 import Error from '../components/Error-component/Error.vue'
 import Manage from '@/views/manage/manage.vue'
@@ -18,6 +19,11 @@ const routes = [
         path: 'homePage',
         name: 'homePage',
         component: homePage
+      },
+      {
+        path: 'searchPage',
+        name: 'searchPage',
+        component: searchPage
       }
     ]
   },

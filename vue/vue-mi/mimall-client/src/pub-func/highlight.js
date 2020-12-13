@@ -33,6 +33,9 @@ function highLight(node, e) {
     case 'banner-icon':
       e.currentTarget.style.background = "#845f3f";
       break;
+    case 'card':
+      e.currentTarget.style.cssText = "transform: translate(0,-2px); box-shadow: 0 2px 20px rgba(0,0,0,.1)";
+      break;
   }
 }
 function fade(node, e) {
@@ -70,6 +73,9 @@ function fade(node, e) {
     case 'banner-icon':
       e.currentTarget.style.background = 'rgba(30, 30, 30, 0.3)';
       break;
+    case 'card':
+      e.currentTarget.style.cssText = "box-shadow: none";
+      break;  
   }
 }
 export {

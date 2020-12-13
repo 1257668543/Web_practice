@@ -3,54 +3,54 @@
     <div class="nav-container">
       <ul class="nav-list">
         <li class="nav-item">
-          <span class="nav-item-span">有品推荐</span>
+          <span class="nav-item-span" @click="toSearchResult(1)">有品推荐</span>
           <span> / </span>
-          <span class="nav-item-span">家用电器</span>
+          <span class="nav-item-span" @click="toSearchResult(2)">家用电器</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">居家餐厨</span>
+          <span class="nav-item-span" @click="toSearchResult(3)">居家餐厨</span>
           <span> / </span>
-          <span class="nav-item-span">电视影音</span>
+          <span class="nav-item-span" @click="toSearchResult(4)">电视影音</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">家具家装</span>
+          <span class="nav-item-span" @click="toSearchResult(5)">家具家装</span>
           <span> / </span>
-          <span class="nav-item-span">智能家庭</span>
+          <span class="nav-item-span" @click="toSearchResult(6)">智能家庭</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">手机电脑</span>
+          <span class="nav-item-span" @click="toSearchResult(7)">手机电脑</span>
           <span> / </span>
-          <span class="nav-item-span">数码周边</span>
+          <span class="nav-item-span" @click="toSearchResult(8)">数码周边</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">日用文创</span>
+          <span class="nav-item-span" @click="toSearchResult(9)">日用文创</span>
           <span> / </span>
-          <span class="nav-item-span">服装配饰</span>
+          <span class="nav-item-span" @click="toSearchResult(10)">服装配饰</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">美妆个护</span>
+          <span class="nav-item-span" @click="toSearchResult(11)">美妆个护</span>
           <span> / </span>
-          <span class="nav-item-span">运动户外</span>
+          <span class="nav-item-span" @click="toSearchResult(12)">运动户外</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">鞋靴箱包</span>
+          <span class="nav-item-span" @click="toSearchResult(13)">鞋靴箱包</span>
           <span> / </span>
-          <span class="nav-item-span">健康保健</span>
+          <span class="nav-item-span" @click="toSearchResult(14)">健康保健</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">美食酒饮</span>
+          <span class="nav-item-span" @click="toSearchResult(15)">美食酒饮</span>
           <span> / </span>
-          <span class="nav-item-span">母婴亲子</span>
+          <span class="nav-item-span" @click="toSearchResult(16)">母婴亲子</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">出行车品</span>
+          <span class="nav-item-span" @click="toSearchResult(17)">出行车品</span>
           <span> / </span>
-          <span class="nav-item-span">宠物生活</span>
+          <span class="nav-item-span" @click="toSearchResult(18)">宠物生活</span>
         </li>
         <li class="nav-item">
-          <span class="nav-item-span">有品海购</span>
+          <span class="nav-item-span" @click="toSearchResult(19)">有品海购</span>
           <span> / </span>
-          <span class="nav-item-span">DLAB</span>
+          <span class="nav-item-span" @click="toSearchResult(20)">DLAB</span>
         </li>
       </ul>
       <div class="nav-detail"></div>
@@ -140,6 +140,9 @@ export default {
     slide() {
       this.$refs.slider.$emit("slidePre");
     },
+    toSearchResult(type) {
+      window.open('./searchPage?cartegoryType=' + type)
+    },
     hl: highLight,
     fd: fade,
   },
@@ -187,6 +190,7 @@ export default {
   cursor: default;
 }
 .nav-item span {
+  cursor: pointer;
   color: #fff;
 }
 .banner-box {

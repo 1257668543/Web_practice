@@ -196,7 +196,7 @@ export default {
   cursor: pointer;
 }
 .form {
-  padding-top: 70px;
+  padding-top: 30px;
   padding-left: 120px;
   box-sizing: border-box;
 }
