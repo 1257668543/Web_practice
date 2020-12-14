@@ -7,6 +7,8 @@ router.post('/user/login', user_controller.login)
 router.post('/user/register', user_controller.register)
 router.post('/goods/insert_goods', good_controller.insert)
 router.get('/goods/getAll_goods', good_controller.getAll)
+router.post('/goods/fetch_selectedGoods', good_controller.fetch)
+router.post('/goods/searchGoods', good_controller.search)
 
 
 module.exports = router

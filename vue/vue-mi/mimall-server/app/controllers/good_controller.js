@@ -37,6 +37,7 @@ const insert = async (ctx, next) => {
   }
 }
 
+// 获取所有商品
 const getAll = async (ctx, next) => {
   let data = [], errmsg = null
   await Goods_col.find({}, (err, doc) => {
@@ -60,7 +61,61 @@ const getAll = async (ctx, next) => {
   }
 }
 
+// 获取指定类别商品
+const fetch = async (ctx, next) => {
+  let data = [], errmsg = null
+  const category = ctx.request.body.type
+  await Goods_col.find({goods_categories: category}, (err, doc) => {
+    if (err) {
+      errmsg = err
+      return
+    }
+    data = doc
+  })
+  if (errmsg) {
+    ctx.body = {
+      code: 0,
+      msg: '查询失败'
+    }
+    return
+  }
+  ctx.body = {
+    code: 1,
+    msg: '查询成功',
+    data: JSON.stringify(data)
+  }
+}
+
+// 搜索相关商品
+const search = async (ctx, next) => {
+  let data = [], errmsg = null
+  const keyword = ctx.request.body.keyword
+  let regexp = new RegExp(keyword, 'i')
+  await Goods_col.find({goods_name: regexp}, (err, doc) => {
+    if (err) {
+      errmsg = err
+      return
+    }
+    data = doc
+  })
+  if (errmsg) {
+    ctx.body = {
+      code: 0,
+      msg: '查询失败'
+    }
+    return
+  }
+  ctx.body = {
+    code: 1,
+    msg: '查询成功',
+    data: JSON.stringify(data)
+  }
+}
+
+
 module.exports = {
   insert,
-  getAll
+  getAll,
+  fetch,
+  search
 }

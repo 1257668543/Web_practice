@@ -1,5 +1,5 @@
 <template>
-  <div class="footer">
+  <div class="footer" :class="footer">
     <div class="container">
       <div class="fl logo">
         <img src="https://www.xiaomiyoupin.com/static3/media/logo@2x.cf8cc6a8.png" alt="logo">
@@ -13,13 +13,27 @@
 
 <script>
 export default {
-
+  data() {
+    return {
+      footer: 'home-footer'
+    }
+  },
+  mounted() {
+    if (this.$route.name === 'searchPage') {
+      this.footer = 'search-footer'
+    }
+  }
 }
 </script>
 
 <style lang="less" scoped>
-.footer {
+.home-footer {
   margin-top: 60px;
+}
+.search-footer {
+  margin-top: 0;
+}
+.footer {
   padding: 45px 0;
   height: 45px;
   line-height: 23px;

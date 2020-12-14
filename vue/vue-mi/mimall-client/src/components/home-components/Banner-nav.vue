@@ -100,33 +100,13 @@ export default {
         "https://img.youpin.mi-img.com/test/9f81b04551f3fed7ef258ba161c79cb9.jpeg?w=1080&h=450",
         "https://img.youpin.mi-img.com/test/bdf6dc980371978a18bd5d5339dac51d.jpeg?w=1080&h=450",
       ],
-      someList: [
-        {
-          html: "slide1",
-          style: {
-            background: "#1bbc9b",
-          },
-        },
-        {
-          html: "slide2",
-          style: {
-            background: "#4bbfc3",
-          },
-        },
-        {
-          html: "slide3",
-          style: {
-            background: "#7baabe",
-          },
-        },
-      ],
       options: {
         currentPage: 0,
         loop: true,
         autoplay: "3000",
         speed: "1000",
         timingFunction: "ease",
-      },
+      }
     };
   },
   components: {

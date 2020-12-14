@@ -20,9 +20,9 @@
             :class="activeSearch ? 'active' : ''"
             v-clickoutside="lostFocus"
           >
-            <a-icon type="search" class="search-icon" @mouseenter="hl('icon-search', $event)" @mouseleave="fd('icon-search', $event)"/>
+            <a-icon type="search" class="search-icon" @mouseenter="hl('icon-search', $event)" @mouseleave="fd('icon-search', $event)" @click="search"/>
             <div class="search-input-con">
-              <input type="text" placeholder="搜一搜" class="field"/>
+              <input type="text" placeholder="搜一搜" class="field" @keyup.enter="search" v-model="keyword"/>
             </div>
           </div>
         </div>
@@ -35,8 +35,12 @@
 import { highLight, fade } from '@/pub-func/highlight.js'
 export default {
   methods: {
+    search() {
+      if (this.keyword.trim() === '') return
+      window.open('/Home/searchPage?keyword=' + this.keyword.trim())
+    },
     toHome() {
-      window.open('/')
+      window.open('/Home/homePage')
     },
     focusSearch() {
       this.activeSearch = true;
@@ -50,6 +54,7 @@ export default {
   data() {
     return {
       activeSearch: false,
+      keyword: ''
     };
   },
   // 自定义指令clickoutside
