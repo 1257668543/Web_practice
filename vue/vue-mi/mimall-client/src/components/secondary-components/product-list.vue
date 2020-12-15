@@ -1,54 +1,119 @@
 <template>
   <div class="product-list">
-  <div
-    class="goods-item-container item-category"
-    :class="index%4 === 0?'first':''"
-    v-for="(item, index) in goods_list"
-    :key="item.goods_id"
-    @mouseenter="chosen('card', $event)"
-    @mouseleave="leave('card', $event)"
-  >
-    <div class="category-img-container">
-      <div class="product-img">
-        <div class="product-image-container">
-          <div class="img-container">
-            <img v-lazy="item.goods_showPic" />
+    <div
+      class="goods-item-container item-category"
+      :class="index % 4 === 0 ? 'first' : ''"
+      v-for="(item, index) in goods_list"
+      :key="item.goods_id"
+      @mouseenter="chosen('card', $event)"
+      @mouseleave="leave('card', $event)"
+      @click="toDetail(item.goods_id)"
+    >
+      <div class="category-img-container">
+        <div class="product-img">
+          <div class="product-image-container">
+            <div class="img-container">
+              <img v-lazy="item.goods_showPic" />
+            </div>
           </div>
         </div>
+        <p class="desc">{{ item.goods_desc }}</p>
       </div>
-      <p class="desc">{{item.goods_desc}}</p>
-    </div>
-    <div class="category-box">
-      <div class="goods-common-tag"></div>
-      <p class="info" :title="item.goods_name">{{item.goods_name}}</p>
-      <p class="price">
-        <span class="unit">¥</span>
-        <span class="num">{{item.goods_price}}</span>
-      </p>
+      <div class="category-box">
+        <div class="goods-common-tag"></div>
+        <p class="info" :title="item.goods_name">{{ item.goods_name }}</p>
+        <p class="price">
+          <span class="unit">¥</span>
+          <span class="num">{{ item.goods_price }}</span>
+        </p>
+      </div>
     </div>
   </div>
-</div>
 </template>
 
 <script>
-import { highLight, fade } from '@/pub-func/highlight.js'
+import { highLight, fade } from "@/pub-func/highlight.js";
 export default {
   props: {
-    goods_list: {
-      type: Array
-    }
+    keyword: {
+      type: String,
+      default: "",
+    },
+    cartegoryType: {
+      type: String,
+      default: "",
+    },
+  },
+  data() {
+    return {
+      goods_list: [],
+    };
   },
   methods: {
     chosen: highLight,
-    leave: fade
-  }
-}
+    leave: fade,
+    toDetail(gid) {
+      window.open("/Home/detail?gid=" + gid);
+    },
+    request() {
+      console.log("keyword:" + this.keyword);
+      console.log("cartegoryType:" + this.cartegoryType);
+      if (this.keyword === "" && this.cartegoryType === "") {
+        this.$http
+          .getAll()
+          .then(res => {
+            this.goods_list = JSON.parse(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+        return;
+      } else if (this.cartegoryType) {
+        this.$http
+          .fetch({
+            type: this.$route.query.cartegoryType,
+          })
+          .then(res => {
+            if (JSON.parse(res.data).length === 0) {
+              this.$emit("match_result", false, 0);
+              return;
+            }
+            this.$emit("match_result", true, JSON.parse(res.data).length);
+            this.goods_list = JSON.parse(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      } else if (this.$route.query.keyword.trim()) {
+        this.$http
+          .search({
+            keyword: this.$route.query.keyword.trim(),
+          })
+          .then(res => {
+            if (JSON.parse(res.data).length === 0) {
+              this.$emit("match_result", false, 0);
+              return;
+            }
+            this.$emit("match_result", true, JSON.parse(res.data).length);
+            this.goods_list = JSON.parse(res.data);
+          })
+          .catch(err => {
+            console.log(err);
+          });
+      }
+    },
+  },
+  mounted() {
+    this.request();
+  },
+};
 </script>
 
 <style lang="less" scoped>
-.product-list:after, .product-list:before {
-    content: " ";
-    display: table;
+.product-list:after,
+.product-list:before {
+  content: " ";
+  display: table;
 }
 .product-list:after {
   clear: both;
@@ -65,9 +130,9 @@ export default {
   float: left;
   margin-left: 5px;
   text-align: center;
-  -webkit-transition: all .4s;
-  -o-transition: all .4s;
-  transition: all .4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
   cursor: pointer;
 }
 .item-container {
@@ -77,9 +142,9 @@ export default {
   margin-left: 5px;
   text-align: center;
   background: #fff;
-  -webkit-transition: all .4s;
-  -o-transition: all .4s;
-  transition: all .4s;
+  -webkit-transition: all 0.4s;
+  -o-transition: all 0.4s;
+  transition: all 0.4s;
   cursor: pointer;
 }
 .first {
@@ -114,16 +179,16 @@ export default {
     }
   }
   .desc {
-  color: #845f3f;
-  font-size: 16px;
-  line-height: 20px;
-  height: 20px;
-  margin-top: 0;
-  overflow: hidden;
-  white-space: nowrap;
-  -o-text-overflow: ellipsis;
-  text-overflow: ellipsis;
-  } 
+    color: #845f3f;
+    font-size: 16px;
+    line-height: 20px;
+    height: 20px;
+    margin-top: 0;
+    overflow: hidden;
+    white-space: nowrap;
+    -o-text-overflow: ellipsis;
+    text-overflow: ellipsis;
+  }
 }
 .category-box {
   margin-top: 18px;

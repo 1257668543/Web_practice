@@ -89,15 +89,17 @@ const fetch = async (ctx, next) => {
 // 搜索相关商品
 const search = async (ctx, next) => {
   let data = [], errmsg = null
-  const keyword = ctx.request.body.keyword
-  let regexp = new RegExp(keyword, 'i')
-  await Goods_col.find({goods_name: regexp}, (err, doc) => {
-    if (err) {
-      errmsg = err
-      return
-    }
-    data = doc
-  })
+  if (ctx.request.body.keyword) {
+    const keyword = ctx.request.body.keyword
+    let regexp = new RegExp(keyword, 'i')
+    await Goods_col.find({goods_name: regexp}, (err, doc) => {
+      if (err) {
+        errmsg = err
+        return
+      }
+      data = doc
+    })  
+  } 
   if (errmsg) {
     ctx.body = {
       code: 0,
@@ -113,9 +115,32 @@ const search = async (ctx, next) => {
 }
 
 
+// 获取指定id商品信息
+const getDetail = async (ctx, next) => {
+  const gid = ctx.request.body.gid
+  const goods = await Goods_col.findOne({
+    goods_id: gid
+  })
+  if (!goods) {
+    ctx.status = 200;
+    ctx.body = {
+      code: 0,
+      msg: '商品不存在'
+    }
+    return;
+  }
+  ctx.body = {
+    code: 1,
+    msg: '查找成功',
+    data: goods
+  }
+}
+
+
 module.exports = {
   insert,
   getAll,
   fetch,
-  search
+  search,
+  getDetail
 }

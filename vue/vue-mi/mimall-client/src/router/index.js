@@ -6,6 +6,7 @@ import searchPage from '@/components/wrapper/Search-wrapper.vue'
 import Login from '@/views/login/login.vue'
 import Error from '../components/Error-component/Error.vue'
 import Manage from '@/views/manage/manage.vue'
+import Detail from '@/components/wrapper/Detail-wrapper.vue'
 
 Vue.use(VueRouter)
 
@@ -24,6 +25,11 @@ const routes = [
         path: 'searchPage',
         name: 'searchPage',
         component: searchPage
+      },
+      {
+        path: 'detail',
+        name: 'detailPage',
+        component: Detail
       }
     ]
   },

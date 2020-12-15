@@ -16,7 +16,6 @@ const login = async (ctx, next) => {
     }
     return;
   }
-
   if (req.user_pwd === user.user_pwd) {
     ctx.body = {
       code: 1,

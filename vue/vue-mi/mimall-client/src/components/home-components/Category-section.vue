@@ -7,7 +7,7 @@
           <span></span>
         </h2>
       </div>
-      <ProductList :goods_list="goods_list"/>
+      <ProductList/>
     </div>
   </div>
 </template>
@@ -15,22 +15,8 @@
 <script>
 import ProductList from '../secondary-components/product-list'
 export default {
-  data() {
-    return {
-      goods_list: []
-    }
-  },
   components: {
     ProductList
-  },
-  beforeMount() {
-  this.$http.getAll()
-    .then((res) => {
-      this.goods_list = JSON.parse(res.data)
-    })
-    .catch((err) => {
-      console.log(err);
-    })
   }
 };
 </script>

@@ -2,21 +2,23 @@
   <div class="search-result">
     <div class="container">
       <div>
-        <div v-if="matched">
+        <div v-show="matched">
           <div class="search-tit">
             为您找到
-            <span class="num">{{goods_list.length}}</span>
+            <span class="num">{{nums}}</span>
             条结果
           </div>
-          <Produclist :goods_list="goods_list"/>
+          <ProducList :cartegoryType="cartegoryType" :keyword="keyword" @match_result="change" ref="productList"/>
         </div>
-        <div class="no-result" v-else>
+        <div class="no-result" v-if="!matched">
           <div class="exception">
             <div class="img"></div>
             <p class="info">抱歉，暂无任何商品</p>
           </div>
           <div style="margin-top: 21px">
             <a href="/Home/homePage" class="btn">继续逛</a>
+            <a style="display: inline-block; width: 10px; height: 36px;"></a>
+            <a class="btn" @click="request">刷新试试</a>
           </div>
         </div>
       </div>
@@ -25,51 +27,27 @@
 </template>
 
 <script>
-import Produclist from '../secondary-components/product-list'
+import ProducList from '../secondary-components/product-list'
 export default {
   data() {
     return {
-      goods_list: [],
-      matched: true
-    }
-  },
-  created() {
-    if (this.$route.query.cartegoryType) {
-      this.$http
-        .fetch({
-          type: this.$route.query.cartegoryType
-        })
-        .then((res) => {
-          if (JSON.parse(res.data).length === 0) {
-            this.matched = false
-            return
-          }
-          this.matched = true          
-          this.goods_list = JSON.parse(res.data)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    } else if (this.$route.query.keyword) {
-      this.$http
-        .search({
-          keyword: this.$route.query.keyword.trim()
-        })
-        .then((res) => {
-          if (JSON.parse(res.data).length === 0) {
-            this.matched = false
-            return
-          }
-          this.matched = true
-          this.goods_list = JSON.parse(res.data)
-        })
-        .catch((err) => {
-          console.log(err);
-        })
+      matched: true,
+      nums: 0,
+      cartegoryType: this.$route.query.cartegoryType || '',
+      keyword: this.$route.query.keyword || ''
     }
   },
   components: {
-    Produclist
+    ProducList
+  },
+  methods: {
+    change(match, num) {
+      this.matched = match
+      this.nums = num
+    },
+    request() {
+      this.$refs.productList.request()
+    }
   }
 }
 </script>

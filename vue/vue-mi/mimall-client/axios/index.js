@@ -4,6 +4,7 @@ import apiInsert from './interface/insert_goods'
 import apiGetAll from './interface/get_Allgoods'
 import apiFetch from './interface/fetch_selectedGoods'
 import apiSearch from './interface/search_goods'
+import apiGet_goodsDetail from './interface/get_goodsDetail'
 
 const install = Vue => {
   if (install.installed) {
@@ -21,7 +22,8 @@ const install = Vue => {
           apiInsert,
           apiGetAll,
           apiFetch,
-          apiSearch
+          apiSearch,
+          apiGet_goodsDetail
         )
       }
     }

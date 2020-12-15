@@ -3,6 +3,7 @@ const cors = require('koa2-cors') // 跨域处理
 const config = require('./config')  // 配置文件
 const mongoose = require('mongoose'); // 连接数据库 
 const user_router = require('./routes/api/user_router') // 引入路由层
+const goods_router = require('./routes/api/goods_router')
 const bodyParser = require('koa-bodyparser');
 
 // 建立数据库连接
@@ -21,6 +22,7 @@ const app = new Koa()
 app.use(cors())
 app.use(bodyParser())
 app.use(user_router.routes()).use(user_router.allowedMethods())
+app.use(goods_router.routes()).use(goods_router.allowedMethods())
 
 
 app.listen(config.port, () => {
