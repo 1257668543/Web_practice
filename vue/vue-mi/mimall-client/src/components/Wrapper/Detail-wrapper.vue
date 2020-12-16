@@ -5,27 +5,34 @@
         <div class="header clearfix">
           <div class="banner clearfix">
             <div class="main fl">
-              <img :src="main_pic_url" alt=""/>
+              <img :src="main_pic_url" alt="" />
             </div>
             <div class="thumb fr">
               <div class="thumb-container" ref="thumb_container">
-                <div class="thumb-pic" v-for="(item, index) in chosen_goods.goods_picArr" :key="index" @click="change($event)" style="border-color: rgb(236, 236, 236);" :style="index === 0 ? 'border-color: rgb(132, 95, 63);' : ''">
-                  <img :src="item"/>
+                <div
+                  class="thumb-pic"
+                  v-for="(item, index) in chosen_goods.goods_picArr"
+                  :key="index"
+                  @click="change($event)"
+                  style="border-color: rgb(236, 236, 236)"
+                  :style="index === 0 ? 'border-color: rgb(132, 95, 63);' : ''"
+                >
+                  <img :src="item" />
                 </div>
               </div>
             </div>
           </div>
           <div class="sku-container">
             <div class="name clearfix">
-              <div class="good-name fl">{{chosen_goods.goods_name}}</div>
+              <div class="good-name fl">{{ chosen_goods.goods_name }}</div>
             </div>
-            <div class="summary">{{chosen_goods.goods_desc}}</div>
+            <div class="summary">{{ chosen_goods.goods_desc }}</div>
             <div class="card">
               <div class="price-line">
                 <h5 class="sku-title">售价</h5>
                 <div class="price">
                   <span class="money-symbol">￥</span>
-                  <span class="value">{{chosen_goods.goods_price}}</span>
+                  <span class="value">{{ chosen_goods.goods_price }}</span>
                 </div>
               </div>
               <div class="service-line">
@@ -70,7 +77,13 @@
                     <div class="minus-btn" @click="reduce">
                       <a class="icons icons-reduce"></a>
                     </div>
-                    <input type="text" :value="nums" class="count-input" @input="user_input($event)" ref="input"/>
+                    <input
+                      type="text"
+                      :value="nums"
+                      class="count-input"
+                      @input="user_input($event)"
+                      ref="input"
+                    />
                     <div class="minus-btn" @click="add">
                       <a class="icons icons-add"></a>
                     </div>
@@ -80,20 +93,36 @@
             </div>
             <div class="btn-line">
               <div class="buy-btn-container">
-                <span class="btns btn-middle brown">加入购物车</span>
-                <span class="btns btn-middle brown-stroke">立即购买</span>
+                <span
+                  class="btns btn-middle brown"
+                  @mouseenter="hl('brown', $event)"
+                  @mouseleave="fd('brown', $event)"
+                  >加入购物车</span
+                >
+                <span
+                  class="btns btn-middle brown-stroke"
+                  @mouseenter="hl('brown-stroke', $event)"
+                  @mouseleave="fd('brown-stroke', $event)"
+                  >立即购买</span
+                >
               </div>
-              <div class="favor-btn">
-                <div>
-                  <a-icon type="heart" class="icons" />
-                  <p>收藏</p>
-                </div>
+              <div
+                class="favor-btn"
+                @mouseenter="hl('icon-detail', $event)"
+                @mouseleave="fd('icon-detail', $event)"
+                @click="changeFavor"
+              >
+                <a-icon type="heart" class="icons" v-if="!isFavor"/>
+                <a-icon type="heart" class="icons" v-else theme="filled" style="color: #845f3f"/>
+                <p>{{ isFavor ? "已收藏" : "收藏" }}</p>
               </div>
-              <div class="service-btn favor-btn">
-                <div>
-                  <a-icon type="customer-service" class="icons" />
-                  <p>客服</p>
-                </div>
+              <div
+                class="service-btn favor-btn"
+                @mouseenter="hl('icon-detail', $event)"
+                @mouseleave="fd('icon-detail', $event)"
+              >
+                <a-icon type="customer-service" class="icons" />
+                <p>客服</p>
               </div>
             </div>
           </div>
@@ -104,66 +133,94 @@
 </template>
 
 <script>
+import { highLight, fade } from "@/pub-func/highlight.js";
 export default {
   data() {
     return {
-      main_pic_url: '',
+      isFavor: "收藏",
+      main_pic_url: "",
       chosen_goods: {
-        goods_name: '',
+        goods_name: "",
         goods_picArr: [],
-        goods_desc: '',
-        goods_price: ''
+        goods_desc: "",
+        goods_price: "",
       },
-      nums: 1
+      nums: 1,
     };
   },
   methods: {
+    hl: highLight,
+    fd: fade,
     change(e) {
-      this.main_pic_url = e.currentTarget.firstChild.src
+      this.main_pic_url = e.currentTarget.firstChild.src;
       this.$refs.thumb_container.childNodes.forEach((child) => {
-        child.style.cssText = "border-color: rgb(236, 236, 236);"
-      })
-      e.currentTarget.style.cssText = "border-color: rgb(132, 95, 63);"
+        child.style.cssText = "border-color: rgb(236, 236, 236);";
+      });
+      e.currentTarget.style.cssText = "border-color: rgb(132, 95, 63);";
     },
     add() {
       if (this.nums === 20) {
-        this.$message.warning('数量已达最大限制')
-        return
+        this.$message.warning("数量已达最大限制");
+        return;
       }
-      this.nums ++
+      this.nums++;
     },
     reduce() {
       if (this.nums === 1) {
-        this.$message.warning('数量已达最小限制')
-        return
+        this.$message.warning("数量已达最小限制");
+        return;
       }
-      this.nums --
+      this.nums--;
     },
     user_input(e) {
       if (e.target.value < 1) {
-        this.nums = 1
-        e.target.value = 1
+        this.nums = 1;
+        e.target.value = 1;
       } else if (e.target.value > 20) {
-        this.nums = 20
-        e.target.value = 20
+        this.nums = 20;
+        e.target.value = 20;
       } else {
-        this.nums = e.target.value
+        this.nums = e.target.value;
       }
-    }
+    },
+    async changeFavor() {
+      await this.$http
+        .changeFavor({
+          gid: this.$route.query.gid,
+          uid: sessionStorage.getItem("user_id")
+            ? sessionStorage.getItem("user_id")
+            : "",
+        })
+        .then((res) => {
+          console.log(res.msg);
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+      this.isFavor = !this.isFavor
+    },
+    get_goodsDetail() {
+      // 获取商品详细信息
+      this.$http
+        .get_goodsDetail({
+          gid: this.$route.query.gid,
+          uid: sessionStorage.getItem("user_id")
+            ? sessionStorage.getItem("user_id")
+            : "",
+        })
+        .then((res) => {
+          this.isFavor = res.isFavor;
+          this.chosen_goods = res.data;
+          this.main_pic_url = this.chosen_goods.goods_picArr[0];
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   created() {
-    this.$http
-      .get_goodsDetail({
-        gid: this.$route.query.gid
-      })
-      .then(res => {
-        this.chosen_goods = res.data;
-        this.main_pic_url = this.chosen_goods.goods_picArr[0]
-      })
-      .catch(err => {
-        console.log(err);
-      })
-  }
+    this.get_goodsDetail()
+  },
 };
 </script>
 
@@ -383,6 +440,7 @@ export default {
         }
       }
       .favor-btn {
+        cursor: pointer;
         float: left;
         width: 50px;
         height: 50px;
@@ -421,6 +479,7 @@ export default {
   display: inline-block;
 }
 .btns {
+  cursor: pointer;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
   display: inline-block;

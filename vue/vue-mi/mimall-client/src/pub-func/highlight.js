@@ -36,6 +36,17 @@ function highLight(node, e) {
     case 'card':
       e.currentTarget.style.cssText = "transform: translate(0,-2px); box-shadow: 0 2px 20px rgba(0,0,0,.1)";
       break;
+    case 'brown':
+      e.currentTarget.style.cssText = 'background-color: #D1BFA6; border-color: #D1BFA6;'
+      break;
+    case 'brown-stroke':
+      e.currentTarget.style.cssText = 'background-color: #845f3f; color: #fff;'
+      break;
+    case 'icon-detail':
+      e.currentTarget.style.background = "#845f3f"
+      e.currentTarget.childNodes.forEach((child) => {
+        child.style.color = "#FFFFFF"
+      })
   }
 }
 function fade(node, e) {
@@ -75,6 +86,18 @@ function fade(node, e) {
       break;
     case 'card':
       e.currentTarget.style.cssText = "box-shadow: none";
+      break;  
+    case 'brown':
+      e.currentTarget.style.cssText = 'background-color: #845f3f; border-color: #845f3f;'
+      break;
+    case 'brown-stroke':
+      e.currentTarget.style.cssText = 'background-color: #fff; color: #845f3f;'
+      break;  
+    case 'icon-detail':
+      e.currentTarget.style.background = "none"
+      e.currentTarget.childNodes.forEach((child) => {
+        child.style.color = "#999"
+      })
       break;  
   }
 }

@@ -1,10 +1,12 @@
 import apiLogin from './interface/login';
 import apiRegister from './interface/register';
 import apiInsert from './interface/insert_goods'
-import apiGetAll from './interface/get_Allgoods'
+import apiGetAll from './interface/get_allGoods'
 import apiFetch from './interface/fetch_selectedGoods'
 import apiSearch from './interface/search_goods'
 import apiGet_goodsDetail from './interface/get_goodsDetail'
+import apiFetchFavor from './interface/fetch_favor'
+import apiChangeFavor from './interface/change_favor'
 
 const install = Vue => {
   if (install.installed) {
@@ -23,7 +25,9 @@ const install = Vue => {
           apiGetAll,
           apiFetch,
           apiSearch,
-          apiGet_goodsDetail
+          apiGet_goodsDetail,
+          apiFetchFavor,
+          apiChangeFavor
         )
       }
     }

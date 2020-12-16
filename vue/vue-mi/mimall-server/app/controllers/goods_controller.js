@@ -1,4 +1,5 @@
 const Goods_col = require('../models/goods')// 引入商品模型层（schema）
+const Favor_col = require('../models/favor')  // 引入收藏模型层（schema）
 const uuidv1 = require('uuid').v1
 
 // 插入商品
@@ -118,6 +119,7 @@ const search = async (ctx, next) => {
 // 获取指定id商品信息
 const getDetail = async (ctx, next) => {
   const gid = ctx.request.body.gid
+  const uid = ctx.request.body.uid
   const goods = await Goods_col.findOne({
     goods_id: gid
   })
@@ -129,10 +131,35 @@ const getDetail = async (ctx, next) => {
     }
     return;
   }
+  if (!uid) {
+    ctx.status = 200;
+    ctx.body = {
+      code: 0,
+      msg: '用户未登录',
+      data: goods,
+      isFavor: false
+    }
+    return;
+  }
+  // 查询收藏信息
+  const favor = await Favor_col.findOne({
+    uid: uid,
+    gid: gid
+  })
+  if (favor) {
+    ctx.body = {
+      code: 0,
+      msg: '用户已收藏',
+      data: goods,
+      isFavor: true
+    }
+    return;
+  }
   ctx.body = {
     code: 1,
-    msg: '查找成功',
-    data: goods
+    msg: '用户未收藏',
+    data: goods,
+    isFavor: false
   }
 }
 

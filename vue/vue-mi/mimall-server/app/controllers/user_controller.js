@@ -1,4 +1,5 @@
 const User_col = require('../models/user')  // 引入用户模型层（schema）
+const Favor_col = require('../models/favor')  // 引入收藏模型层（schema）
 const uuidv1 = require('uuid').v1
 
 // 登录
@@ -73,7 +74,56 @@ const register = async (ctx, next) => {
   }
 }
 
+
+const changeFavor = async (ctx, next) => {
+  const gid = ctx.request.body.gid
+  const uid = ctx.request.body.uid
+  // 查找用户是否已收藏
+  const favor = await Favor_col.findOne({
+    uid: uid,
+    gid: gid
+  })
+  if (favor) {
+    let error = null;
+    await Favor_col.deleteOne({
+      uid: uid,
+      gid: gid
+    }, (err) => {
+      error = err
+    })
+    if (error) {
+      ctx.body = {
+        code: 0,
+        msg: '取消收藏失败'
+      }
+      return;
+    }
+    ctx.body = {
+      code: 1,
+      msg: '取消收藏成功'
+    }
+    return;
+  }
+  // 未收藏情况下插入数据
+  const newFavor = await Favor_col.create({
+    uid: uid,
+    gid: gid
+  })
+  if (newFavor) {
+    ctx.body = {
+      code: 1,
+      msg: '收藏成功'
+    }
+    return;
+  }
+  ctx.body = {
+    code: 0,
+    msg: '添加收藏失败'
+  }
+}
+
 module.exports = {
   login,
-  register
+  register,
+  changeFavor
 }
