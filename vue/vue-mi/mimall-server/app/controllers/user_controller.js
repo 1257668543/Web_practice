@@ -1,5 +1,5 @@
 const User_col = require('../models/user')  // 引入用户模型层（schema）
-const Favor_col = require('../models/favor')  // 引入收藏模型层（schema）
+const UserInfo_col = require('../models/userInfo')  // 引入用户信息模型层（schema）
 const uuidv1 = require('uuid').v1
 
 // 登录
@@ -56,7 +56,15 @@ const register = async (ctx, next) => {
     user_nickname: req.user_nickname,
     user_pwd: req.user_pwd
   })
-  if (newUser) {
+  const newUserInfo = await UserInfo_col.create({
+    user_id: userId,
+    orders: [],
+    address: [],
+    cart: [],
+    favor: [],
+    assets: []
+  })
+  if (newUser && newUserInfo) {
     ctx.body = {
       code: 1,
       msg: '注册成功',
@@ -75,50 +83,40 @@ const register = async (ctx, next) => {
 }
 
 
+// 更新商品收藏信息
 const changeFavor = async (ctx, next) => {
   const gid = ctx.request.body.gid
   const uid = ctx.request.body.uid
+  // 后端二次校验登录状态
+  if (!uid) {
+    ctx.status = 200;
+    ctx.body = {
+      code: 0,
+      msg: '用户未登录，无法拉取收藏信息'
+    }
+    return
+  }
   // 查找用户是否已收藏
-  const favor = await Favor_col.findOne({
-    uid: uid,
-    gid: gid
+  const userInfo = await UserInfo_col.findOne({
+    user_id: uid
   })
-  if (favor) {
-    let error = null;
-    await Favor_col.deleteOne({
-      uid: uid,
-      gid: gid
-    }, (err) => {
-      error = err
-    })
-    if (error) {
-      ctx.body = {
-        code: 0,
-        msg: '取消收藏失败'
-      }
-      return;
-    }
+  const favorArr = userInfo.favor 
+  // 已收藏时判断为取消收藏，更新数据库
+  if (favorArr.indexOf(gid) > -1) {
+    favorArr.splice(favorArr.indexOf(gid), 1)
+    await UserInfo_col.updateOne({user_id: uid}, {favor: favorArr})
     ctx.body = {
       code: 1,
-      msg: '取消收藏成功'
+      msg: '移除收藏成功！',
     }
     return;
   }
-  // 未收藏情况下插入数据
-  const newFavor = await Favor_col.create({
-    uid: uid,
-    gid: gid
-  })
-  if (newFavor) {
-    ctx.body = {
-      code: 1,
-      msg: '收藏成功'
-    }
-    return;
-  }
+  // 未收藏状态，添加收藏，更新数据库
+  const newFavorArr = favorArr.concat(gid);
+  await UserInfo_col.updateOne({user_id: uid}, {favor: newFavorArr})
   ctx.body = {
-    code: 0,
-    msg: '添加收藏失败'
+    code: 1,
+    msg: '加入收藏成功！',
   }
 }
 

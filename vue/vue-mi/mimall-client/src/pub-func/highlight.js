@@ -47,6 +47,13 @@ function highLight(node, e) {
       e.currentTarget.childNodes.forEach((child) => {
         child.style.color = "#FFFFFF"
       })
+      break;
+    case 'banner-li':
+      e.currentTarget.style.cssText = 'background-color: rgba(0, 0, 0, .15)';
+      break;
+    case 'banner-span':
+      e.currentTarget.style.color = "#dfaf7e"
+      break;
   }
 }
 function fade(node, e) {
@@ -96,8 +103,18 @@ function fade(node, e) {
     case 'icon-detail':
       e.currentTarget.style.background = "none"
       e.currentTarget.childNodes.forEach((child) => {
-        child.style.color = "#999"
+        if (child.id === 'favor') {
+          child.style.color = '#845f3f'
+        } else {
+          child.style.color = "#999"
+        }
       })
+      break;  
+    case 'banner-li':
+      e.currentTarget.style.cssText = 'background-color: none';
+      break;
+    case 'banner-span':
+      e.currentTarget.style.color = "#ffffff";
       break;  
   }
 }

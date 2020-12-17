@@ -113,7 +113,7 @@
                 @click="changeFavor"
               >
                 <a-icon type="heart" class="icons" v-if="!isFavor"/>
-                <a-icon type="heart" class="icons" v-else theme="filled" style="color: #845f3f"/>
+                <a-icon type="heart" class="icons" id="favor" style="color: #845f3f;" v-else theme="filled"/>
                 <p>{{ isFavor ? "已收藏" : "收藏" }}</p>
               </div>
               <div
@@ -184,6 +184,10 @@ export default {
       }
     },
     async changeFavor() {
+      if (!sessionStorage.getItem("user_id")) {
+        this.toLogin()
+        return
+      }
       await this.$http
         .changeFavor({
           gid: this.$route.query.gid,
@@ -192,12 +196,27 @@ export default {
             : "",
         })
         .then((res) => {
-          console.log(res.msg);
+          this.$message.success(res.msg)
         })
         .catch((err) => {
           console.log(err);
         });
       this.isFavor = !this.isFavor
+    },
+    toLogin() {
+      const that = this
+      const h = this.$createElement;
+      this.$confirm({
+        title: '您还没有登录，请先登录账号',
+        content: h('div', {}, [
+          h('p', '请点击确认关闭对话框，或选择去登录')
+        ]),
+        okText: '确认',
+        cancelText: '去登录',
+        onCancel() {
+          that.$router.push('/')
+        },
+      });
     },
     get_goodsDetail() {
       // 获取商品详细信息
@@ -214,7 +233,7 @@ export default {
           this.main_pic_url = this.chosen_goods.goods_picArr[0];
         })
         .catch((err) => {
-          console.log(err);
+          console.log('错误：' + err);
         });
     },
   },

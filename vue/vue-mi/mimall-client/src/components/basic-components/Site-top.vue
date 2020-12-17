@@ -160,6 +160,7 @@ export default {
     signOut() {
       sessionStorage.removeItem('user_account')
       sessionStorage.removeItem('user_nickname')
+      sessionStorage.removeItem('user_id')
     }
   },
 };

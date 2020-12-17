@@ -2,55 +2,55 @@
   <div class="banner-nav">
     <div class="nav-container">
       <ul class="nav-list">
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(1)">有品推荐</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(1)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">有品推荐</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(2)">家用电器</span>
+          <span class="nav-item-span" @click="toSearchResult(2)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">家用电器</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(3)">居家餐厨</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(3)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">居家餐厨</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(4)">电视影音</span>
+          <span class="nav-item-span" @click="toSearchResult(4)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">电视影音</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(5)">家具家装</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(5)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">家具家装</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(6)">智能家庭</span>
+          <span class="nav-item-span" @click="toSearchResult(6)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">智能家庭</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(7)">手机电脑</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(7)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">手机电脑</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(8)">数码周边</span>
+          <span class="nav-item-span" @click="toSearchResult(8)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">数码周边</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(9)">日用文创</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(9)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">日用文创</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(10)">服装配饰</span>
+          <span class="nav-item-span" @click="toSearchResult(10)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">服装配饰</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(11)">美妆个护</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(11)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">美妆个护</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(12)">运动户外</span>
+          <span class="nav-item-span" @click="toSearchResult(12)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">运动户外</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(13)">鞋靴箱包</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(13)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">鞋靴箱包</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(14)">健康保健</span>
+          <span class="nav-item-span" @click="toSearchResult(14)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">健康保健</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(15)">美食酒饮</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(15)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">美食酒饮</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(16)">母婴亲子</span>
+          <span class="nav-item-span" @click="toSearchResult(16)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">母婴亲子</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(17)">出行车品</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(17)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">出行车品</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(18)">宠物生活</span>
+          <span class="nav-item-span" @click="toSearchResult(18)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">宠物生活</span>
         </li>
-        <li class="nav-item">
-          <span class="nav-item-span" @click="toSearchResult(19)">有品海购</span>
+        <li class="nav-item" @mouseenter="hl('banner-li' ,$event)" @mouseleave="fd('banner-li' ,$event)">
+          <span class="nav-item-span" @click="toSearchResult(19)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">有品海购</span>
           <span> / </span>
-          <span class="nav-item-span" @click="toSearchResult(20)">DLAB</span>
+          <span class="nav-item-span" @click="toSearchResult(20)" @mouseenter="hl('banner-span', $event)" @mouseleave="fd('banner-span', $event)">DLAB</span>
         </li>
       </ul>
       <div class="nav-detail"></div>
