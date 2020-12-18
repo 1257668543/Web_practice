@@ -40,8 +40,8 @@
             <a-select-option value="1">有品推荐</a-select-option>
             <a-select-option value="2">家用电器</a-select-option>
             <a-select-option value="3">居家餐厨</a-select-option>
-            <a-select-option value="4">家具家装</a-select-option>
-            <a-select-option value="5">电视影音</a-select-option>
+            <a-select-option value="4">电视影音</a-select-option>
+            <a-select-option value="5">家具家装</a-select-option>
             <a-select-option value="6">智能家庭</a-select-option>
             <a-select-option value="7">手机电脑</a-select-option>
             <a-select-option value="8">数码周边</a-select-option>
