@@ -47,6 +47,7 @@ export default {
   data() {
     return {
       goods_list: [],
+      recallTimes: 0
     };
   },
   methods: {
@@ -56,13 +57,18 @@ export default {
       window.open("/Home/detail?gid=" + gid);
     },
     request() {
-      console.log("keyword:" + this.keyword);
-      console.log("cartegoryType:" + this.cartegoryType);
       if (this.keyword === "" && this.cartegoryType === "") {
         this.$http
           .getAll()
           .then(res => {
-            this.goods_list = JSON.parse(res.data);
+            let data = JSON.parse(res.data)
+            // 后端查询为空时重复请求，限制次数为3次
+            if (data.length === 0 && this.recallTimes < 3) {
+              this.recallTimes ++
+              this.request()
+              return
+            }
+            this.goods_list = data
           })
           .catch(err => {
             console.log(err);
@@ -74,6 +80,13 @@ export default {
             type: this.$route.query.cartegoryType,
           })
           .then(res => {
+            let data = JSON.parse(res.data)
+            // 后端查询为空时重复请求，限制次数为3次
+            if (data.length === 0 && this.recallTimes < 3) {
+              this.recallTimes ++
+              this.request()
+              return
+            }
             if (JSON.parse(res.data).length === 0) {
               this.$emit("match_result", false, 0);
               return;
@@ -84,12 +97,20 @@ export default {
           .catch(err => {
             console.log(err);
           });
+        return
       } else if (this.$route.query.keyword.trim()) {
         this.$http
           .search({
             keyword: this.$route.query.keyword.trim(),
           })
           .then(res => {
+            let data = JSON.parse(res.data)
+            // 后端查询为空时重复请求，限制次数为3次
+            if (data.length === 0 && this.recallTimes < 3) {
+              this.recallTimes ++
+              this.request()
+              return
+            }
             if (JSON.parse(res.data).length === 0) {
               this.$emit("match_result", false, 0);
               return;
@@ -103,9 +124,9 @@ export default {
       }
     },
   },
-  mounted() {
-    this.request();
-  },
+  created() {
+    this.request()
+  }
 };
 </script>
 
