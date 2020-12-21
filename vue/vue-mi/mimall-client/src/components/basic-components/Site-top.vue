@@ -5,7 +5,7 @@
         <div class="fr">
           <div class="fl item user">
             <div class="login" v-if="isLogin" @mouseenter="show_itemNav" @mouseleave="hide_itemNav">
-              <a href="" class="user_order">
+              <a href="" class="user_order" @click="toPersonal">
                 <a-icon
                   type="smile"
                   theme="twoTone"
@@ -17,7 +17,7 @@
               </a>
               <div href="" class="item-nav" :class="itemNav ? 'showed' : 'hidden'">
                 <ul class="user-nav">
-                  <li>
+                  <li @click="toPersonal('orders')">
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)">我的订单</a>
                   </li>
@@ -25,15 +25,15 @@
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)">退款/售后</a>
                   </li>
-                  <li>
+                  <li @click="toPersonal('assets')">
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)">我的资产</a>
                   </li>
-                  <li>
+                  <li @click="toPersonal('collections')">
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)">我的收藏</a>
                   </li>
-                  <li>
+                  <li @click="toPersonal('address')">
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)">地址管理</a>
                   </li>
@@ -156,6 +156,9 @@ export default {
     },
     hide_itemNav() {
       this.itemNav = false
+    },
+    toPersonal(url) {
+      window.open('/Home/personal-center/' + url)      
     },
     signOut() {
       sessionStorage.removeItem('user_account')

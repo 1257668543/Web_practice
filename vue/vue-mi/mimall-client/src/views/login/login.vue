@@ -149,7 +149,7 @@ export default {
           sessionStorage.setItem('user_id', res.data.user_id)
           sessionStorage.setItem('user_nickname', res.data.user_nickname)
           setTimeout(() => {
-            this.$router.push('/Home/homePage')
+            this.$router.push('/Home/home')
           }, 3000)
         })
         .catch((err) => {

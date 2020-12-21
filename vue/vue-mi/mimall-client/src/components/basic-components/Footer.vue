@@ -15,22 +15,22 @@
 export default {
   data() {
     return {
-      footer: 'home-footer'
+      footer: 'mt-footer'
     }
   },
   mounted() {
-    if (this.$route.name === 'searchPage') {
-      this.footer = 'search-footer'
+    if (this.$route.name === 'searchPage' || this.$route.fullPath.includes('personal-center')) {
+      this.footer = 'nmt-footer'
     }
   }
 }
 </script>
 
 <style lang="less" scoped>
-.home-footer {
+.mt-footer {
   margin-top: 60px;
 }
-.search-footer {
+.nmt-footer {
   margin-top: 0;
 }
 .footer {

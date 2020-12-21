@@ -289,10 +289,10 @@ export default {
   methods: {
     search() {
       if (this.keyword.trim() === "") return;
-      window.open("/Home/searchPage?keyword=" + this.keyword.trim());
+      window.open("/Home/search?keyword=" + this.keyword.trim());
     },
     toHome() {
-      window.open("/Home/homePage");
+      window.open("/Home/home");
     },
     focusSearch() {
       this.activeSearch = true;
@@ -301,7 +301,7 @@ export default {
       this.activeSearch = false;
     },
     toSearchResult(type) {
-      window.open("./searchPage?cartegoryType=" + type);
+      window.open("./search?cartegoryType=" + type);
     },
     handleScroll() {
       //获取滚动时的高度
@@ -310,7 +310,7 @@ export default {
         document.documentElement.scrollTop ||
         document.body.scrollTop;
       // console.log(scrollTop)
-      if (scrollTop > 600) {
+      if (scrollTop > 500) {
         this.showNav = true;
         this.fixed = true;
       } else {
