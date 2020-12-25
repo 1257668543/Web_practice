@@ -45,8 +45,10 @@
         </div>
       </div>
       <div class="personal-container-box">
-        <!-- 三级路由控制组件 -->
-        <router-view></router-view>
+        <div class="personal-main-box">
+          <!-- 三级路由控制组件 -->
+          <router-view></router-view>
+        </div>
       </div>
     </div>
   </div>

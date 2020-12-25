@@ -121,7 +121,7 @@ export default {
       this.$refs.slider.$emit("slidePre");
     },
     toSearchResult(type) {
-      window.open('./searchPage?cartegoryType=' + type)
+      window.open('./search?cartegoryType=' + type)
     },
     hl: highLight,
     fd: fade,

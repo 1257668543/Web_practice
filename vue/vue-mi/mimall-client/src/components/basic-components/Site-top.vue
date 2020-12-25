@@ -5,7 +5,7 @@
         <div class="fr">
           <div class="fl item user">
             <div class="login" v-if="isLogin" @mouseenter="show_itemNav" @mouseleave="hide_itemNav">
-              <a href="" class="user_order" @click="toPersonal">
+              <a class="user_order" @click="toPersonal('')">
                 <a-icon
                   type="smile"
                   theme="twoTone"
@@ -15,7 +15,7 @@
                 <span class="user_nickname">{{ user_nickname }}</span>
                 <a-icon type="down" class="icon-down-arrow"/>
               </a>
-              <div href="" class="item-nav" :class="itemNav ? 'showed' : 'hidden'">
+              <div class="item-nav" :class="itemNav ? 'showed' : 'hidden'">
                 <ul class="user-nav">
                   <li @click="toPersonal('orders')">
                     <a href="" class="item" @mouseenter="hl('clauses', $event)"

@@ -88,7 +88,7 @@
                     </div>
                     <div class="linkToHome">
                       <div>
-                        <a href="./Home/homePage" id="home-link">先逛逛</a>
+                        <a href="./Home/home" id="home-link">先逛逛</a>
                       </div>
                       <div>
                         <a href="./admin" id="manage-link">管理员登录</a>
