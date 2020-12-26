@@ -1,6 +1,8 @@
 const User_col = require('../models/user')  // 引入用户模型层（schema）
+const Goods_col = require('../models/goods')// 引入商品模型层（schema）
 const UserInfo_col = require('../models/userInfo')  // 引入用户信息模型层（schema）
 const uuidv1 = require('uuid').v1
+const goods = require('../models/goods')
 
 // 登录
 const login = async (ctx, next) => {
@@ -120,8 +122,45 @@ const changeFavor = async (ctx, next) => {
   }
 }
 
+
+// 获取所有用户收藏
+const fetchFavor = async (ctx, next) => {
+  const uid = ctx.request.body.uid
+  // 后端二次校验登录状态
+  if (!uid) {
+    ctx.status = 200;
+    ctx.body = {
+      code: 0,
+      msg: '用户未登录，无法拉取收藏信息'
+    }
+    return
+  }
+  const userInfo = await UserInfo_col.findOne({
+    user_id: uid
+  })
+  const favorArr = userInfo.favor
+  const promiseArr = []
+  for (let i = 0; i < favorArr.length; i++) {
+    promiseArr.push(new Promise(async (resolve, reject) => {
+      const goods = await Goods_col.findOne({
+        goods_id: favorArr[i]
+      })
+      resolve(goods)
+    }))
+  }
+  const res = await Promise.all(promiseArr).then(goodsArr => {
+    return goodsArr
+  })
+  ctx.body = {
+    code: 1,
+    msg: '拉取用户所有收藏商品信息成功',
+    data: res
+  }
+}
+
 module.exports = {
   login,
   register,
-  changeFavor
+  changeFavor,
+  fetchFavor
 }

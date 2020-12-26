@@ -1,9 +1,10 @@
 import axios from '../api'
 
-const fetchFavor = () => {
+const fetchFavor = (data) => {
   return axios({
     url: '/user/fetchFavor',
-    method: 'post'
+    method: 'post',
+    data
   })
 }
 

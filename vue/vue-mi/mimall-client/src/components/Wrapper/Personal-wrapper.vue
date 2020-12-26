@@ -227,4 +227,14 @@ export default {
     cursor: default;
   }
 }
+.personal-container-box {
+  width: 900px;
+  min-height: 700px;
+  padding-bottom: 25px;
+  background: #fff repeat 0 0 none;
+  .personal-main-box {
+    padding: 11px 0 11px 60px;
+    min-height: 500px;
+  }
+}
 </style>
