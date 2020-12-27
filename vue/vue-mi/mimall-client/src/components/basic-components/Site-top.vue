@@ -64,7 +64,6 @@
           <span class="fl line"></span>
           <div class="fl help">
             <a
-              href="https://www.xiaomiyoupin.com/help"
               class="m-safe-anchor"
               @mouseenter="hl('top', $event)"
               @mouseleave="fd('top', $event)"
@@ -74,7 +73,6 @@
           <span class="fl line"></span>
           <div class="fl m-download">
             <a
-              href="https://www.xiaomiyoupin.com/download"
               class="download"
               @mouseenter="hl('top', $event)"
               @mouseleave="fd('top', $event)"
@@ -87,7 +85,6 @@
           <div class="fl clauses" @mouseenter="showNav" @mouseleave="hideNav">
             <div class="m-clauses">
               <a
-                href="#"
                 class="m-safe"
                 @mouseenter="hl('top', $event)"
                 @mouseleave="fd('top', $event)"
@@ -99,7 +96,6 @@
               <ul class="nav-list">
                 <li>
                   <a
-                    href=""
                     @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)"
                     >资质证照</a
@@ -107,7 +103,6 @@
                 </li>
                 <li>
                   <a
-                    href=""
                     @mouseenter="hl('clauses', $event)"
                     @mouseleave="fd('clauses', $event)"
                     >协议规则</a
