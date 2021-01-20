@@ -1,6 +1,11 @@
 <template>
   <div>
-    Address
+    <section>
+      <div class="person-tit">
+        <p>地址管理</p>
+      </div>
+    </section>
+    <section></section>
   </div>
 </template>
 

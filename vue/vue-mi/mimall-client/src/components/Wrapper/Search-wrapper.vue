@@ -16,7 +16,7 @@
             <p class="info">抱歉，暂无任何商品</p>
           </div>
           <div style="margin-top: 21px">
-            <a href="/Home/homePage" class="btn">继续逛</a>
+            <a href="/Home/home" class="btn">继续逛</a>
             <a style="display: inline-block; width: 10px; height: 36px;"></a>
             <a class="btn" @click="request">刷新试试</a>
           </div>

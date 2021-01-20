@@ -54,6 +54,12 @@ function highLight(node, e) {
     case 'banner-span':
       e.currentTarget.style.color = "#dfaf7e"
       break;
+    case 'personal-nav_bas':
+      e.currentTarget.style.color = "#845f3f"
+      break;
+    case 'personal-nav_cur':
+      e.currentTarget.style.color = "#845f3f"
+      break;
   }
 }
 function fade(node, e) {
@@ -115,7 +121,13 @@ function fade(node, e) {
       break;
     case 'banner-span':
       e.currentTarget.style.color = "#ffffff";
-      break;  
+      break;
+    case 'personal-nav_bas':
+      e.currentTarget.style.color = "#000000"
+      break;
+    case 'personal-nav_cur':
+      e.currentTarget.style.color = "#999999"
+      break;
   }
 }
 export {

@@ -3,13 +3,13 @@
     <div class="personal-section-box container">
       <div class="secondary-navigator">
         <span>
-          <a>首页</a>
+          <a @mouseenter="hl('personal-nav_bas', $event)" @mouseleave="fd('personal-nav_bas', $event)" @click="changeFunction('/Home/home')">首页</a>
         </span>
         <span>
-          <a>个人中心</a>
+          <a @mouseenter="hl('personal-nav_bas', $event)" @mouseleave="fd('personal-nav_bas', $event)" @click="changeFunction('orders')">个人中心</a>
         </span>
         <span>
-          <a>{{current}}</a>          
+          <a @mouseenter="hl('personal-nav_cur', $event)" @mouseleave="fd('personal-nav_cur', $event)">{{current}}</a>          
         </span>
       </div>
       <div class="personal-list-box">
@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import { highLight, fade } from "@/pub-func/highlight.js";
 export default {
   data() {
     return {
@@ -87,8 +88,11 @@ export default {
           this.showAddress = true;
           break;
       }
+      console.log(this.$router);
       this.$router.push(url)
-    }
+    },
+    hl: highLight,
+    fd: fade
   },
   created() {
     switch(this.$route.name) {
