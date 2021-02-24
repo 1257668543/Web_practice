@@ -5,7 +5,13 @@
         <p>地址管理</p>
       </div>
     </section>
-    <section></section>
+    <section>
+      <div class="personal-addresss-box">
+        <div class="address-list">
+          
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
