@@ -6,7 +6,7 @@ window.onload = function() {
 function imgLocation(parent, content) {
     // 将parent下的所有内容全部取出
     var cparent = document.getElementById(parent)
-    // console.log(cparent)
+    console.log(cparent)
     var ccontent = getChildElement(cparent, content)
     // console.log(ccontent)
     var imgWidth = ccontent[0].offsetWidth
