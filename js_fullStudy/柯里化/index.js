@@ -1,7 +1,7 @@
 function sum(a, b, c) {
   console.log(a + b + c);
 }
-// console.log(sum.length);
+// console.log(sum.length); // 3
 
 function curry(fn, len = fn.length) {
   return _curry.call(this, fn, len)
@@ -30,7 +30,7 @@ function fn(a, b, c, d, e) {
 }
 let _fn = curry(fn)
 // _fn(1, 2, 3, 4, 5)
-_fn(1)(2)(3, 4, 5)
+// _fn(1)(2)(3, 4, 5)
 // _fn(1, 2)(3, 4)(5)
 // _fn(1)(2)(3)(4)(5)
 
