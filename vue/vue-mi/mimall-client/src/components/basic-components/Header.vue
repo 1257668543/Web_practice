@@ -417,7 +417,7 @@ export default {
   float: left;
   width: 123px;
   height: 51px;
-  background: url(https://www.xiaomiyoupin.com/static3/media/logo@2x.cf8cc6a8.png)
+  background: url(https://www.xiaomiyoupin.com/static3/media/logo@2x.30cd8c00.png)
     50% no-repeat;
   background-size: 100%;
   line-height: 50px;

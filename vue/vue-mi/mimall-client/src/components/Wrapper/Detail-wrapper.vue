@@ -75,7 +75,7 @@
                 <div class="count-container">
                   <div>
                     <div class="minus-btn" @click="reduce">
-                      <a class="icons icons-reduce"></a>
+                      <a class="icons icons-reduce">-</a>
                     </div>
                     <input
                       type="text"
@@ -85,7 +85,7 @@
                       ref="input"
                     />
                     <div class="minus-btn" @click="add">
-                      <a class="icons icons-add"></a>
+                      <a class="icons icons-add">+</a>
                     </div>
                   </div>
                 </div>

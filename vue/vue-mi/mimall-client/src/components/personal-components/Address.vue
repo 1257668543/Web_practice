@@ -2,7 +2,7 @@
   <div>
     <section>
       <div class="person-tit">
-        <p>地址管理</p>
+        <p>address</p>
       </div>
     </section>
     <section>

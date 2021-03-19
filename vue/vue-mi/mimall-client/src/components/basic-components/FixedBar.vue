@@ -35,7 +35,7 @@
           <div class="pop-inner">
             <img
               class="qr-code"
-              src="https://www.xiaomiyoupin.com/static3/media/code.6b4e6f01.png"
+              src="https://www.xiaomiyoupin.com/static3/media/code.8d037abc.png"
               alt="qr-code"
             />
             <p class="site-info">下载小米有品APP<br />得新人礼包</p>
@@ -54,7 +54,7 @@
             <div class="gift-bg"></div>
             <img
               class="qr-code"
-              src="https://www.xiaomiyoupin.com/static3/media/code.6b4e6f01.png"
+              src="https://www.xiaomiyoupin.com/static3/media/code.8d037abc.png"
               alt="qr-code"
             />
             <p class="site-info">立即扫码下载·小米有品 APP</p>
@@ -72,7 +72,7 @@
           <div class="pop-inner">
             <img
               class="qr-code"
-              src="https://www.xiaomiyoupin.com/static3/media/wx_code.83208f15.png"
+              src="https://www.xiaomiyoupin.com/static3/media/wx_code.08890cf0.png"
               alt="qr-code"
             />
             <p class="site-info">
@@ -220,7 +220,7 @@ export default {
   width: 190px;
   height: 152px;
   margin-bottom: 20px;
-  background: url(https://www.xiaomiyoupin.com/static3/media/gift-gd.3f999fde.png)
+  background: url(https://www.xiaomiyoupin.com/static3/media/gift-gd.339f2400.png)
     50% no-repeat;
   background-size: 100%;
 }

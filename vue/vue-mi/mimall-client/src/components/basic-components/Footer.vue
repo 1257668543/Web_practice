@@ -2,10 +2,10 @@
   <div class="footer" :class="footer">
     <div class="container">
       <div class="fl logo">
-        <img src="https://www.xiaomiyoupin.com/static3/media/logo@2x.cf8cc6a8.png" alt="logo">
+        <img src="https://www.xiaomiyoupin.com/static3/media/logo@2x.30cd8c00.png" alt="logo">
       </div>
       <div class="fr icons">
-        <img src="https://www.xiaomiyoupin.com/static3/media/f-logo.c6285587.png" alt="icon">
+        <img src="https://www.xiaomiyoupin.com/static3/media/f-logo.76889756.png" alt="icon">
       </div>
     </div>
   </div>
